@@ -1,0 +1,16 @@
+{
+  "email_config": {
+    "sender_email": "nikolas@googlemail.com",
+    "email_password": "xxxx xxxx xxxx xxxx",
+    "email_to": "nikolas@googlemail.com"
+  },
+  "routes": [
+    {"id": "fra_jnb", "departure": "FRA", "arrival": "JNB", "max_price_eur": 1800, "active": true},
+    {"id": "muc_jnb", "departure": "MUC", "arrival": "JNB", "max_price_eur": 1750, "active": true},
+    {"id": "fmo_jnb", "departure": "FMO", "arrival": "JNB", "max_price_eur": 1600, "active": true},
+    {"id": "ams_jnb", "departure": "AMS", "arrival": "JNB", "max_price_eur": 1650, "active": true},
+    {"id": "osl_jnb", "departure": "OSL", "arrival": "JNB", "max_price_eur": 1600, "active": true},
+    {"id": "arn_jnb", "departure": "ARN", "arrival": "JNB", "max_price_eur": 1550, "active": true},
+    {"id": "cph_jnb", "departure": "CPH", "arrival": "JNB", "max_price_eur": 1600, "active": true}
+  ]
+}
