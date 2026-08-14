@@ -19,8 +19,8 @@
 
   "schwellwerte": {
     "_kommentar": "Preis pro Person, Hin- und Rückflug zusammen, in Euro.",
-    "alarm_ab": 7500,
-    "sofort_buchen": 6000,
+    "alarm_ab": 6000,
+    "sofort_buchen": 5000,
     "nur_besser_als_letzter_alarm": true,
     "mindestverbesserung_eur": 200
   },

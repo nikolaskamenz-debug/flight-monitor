@@ -14,7 +14,7 @@ GitHub Actions (täglich 06:00 UTC)
   └─ deal_monitor.py
        ├─ Raster: Amadeus · Duffel · Kiwi · Travelpayouts  (aktiv, wenn Key gesetzt)
        ├─ SerpAPI (Google Flights): prüft die 3 besten Treffer nach
-       ├─ Filter: FIRST auf Langstrecke, max. 1 Umstieg, unter 7.500 € p.P.
+       ├─ Filter: FIRST auf Langstrecke, max. 1 Umstieg, unter 6.000 € p.P.
        ├─ Lufthansa Open API: bestätigt die Langstrecke im offiziellen Flugplan
        ├─ preis_historie.json: nur echte Verbesserungen (≥ 200 €) melden
        └─ POST an n8n-Webhook  ->  n8n formatiert & verschickt die Mail
