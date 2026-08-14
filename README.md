@@ -2,7 +2,7 @@
 
 **Essen. Trinken. Status retten.**
 
-Täglicher Preismonitor für Lufthansa-First-Class-Flüge nach Johannesburg (JNB):
+Preismonitor (zweimal täglich, 8 und 20 Uhr deutscher Zeit) für Lufthansa-First-Class-Flüge nach Johannesburg (JNB):
 zwei Personen, Hin- und Rückflug im Dezember, 5–10 Tage Aufenthalt, Abflug ab
 **AMS** oder **FMO**. Gemailt wird nur, wenn ein Angebot unter der Schwelle liegt
 und spürbar besser ist als alles bisher Gesehene.
@@ -10,10 +10,10 @@ und spürbar besser ist als alles bisher Gesehene.
 ## Wie es funktioniert
 
 ```
-GitHub Actions (täglich 06:00 UTC)
+GitHub Actions (06:00 & 18:00 UTC = 8 & 20 Uhr Sommerzeit)
   └─ deal_monitor.py
        ├─ Raster: Amadeus · Duffel · Kiwi · Travelpayouts  (aktiv, wenn Key gesetzt)
-       ├─ SerpAPI (Google Flights): prüft die 3 besten Treffer nach
+       ├─ SerpAPI (Google Flights): prüft den besten Treffer nach
        ├─ Filter: FIRST auf Langstrecke, max. 1 Umstieg, unter 6.000 € p.P.
        ├─ Lufthansa Open API: bestätigt die Langstrecke im offiziellen Flugplan
        ├─ preis_historie.json: nur echte Verbesserungen (≥ 200 €) melden
@@ -44,10 +44,11 @@ ist der volle Suchraum alle ~6 Tage einmal komplett abgedeckt.
    `TRAVELPAYOUTS_TOKEN` (travelpayouts.com), `SERPAPI_KEY` (serpapi.com),
    `LH_CLIENT_ID`/`LH_CLIENT_SECRET` (developer.lufthansa.com).
    Nur mit Altbestand: `AMADEUS_CLIENT_ID`/`AMADEUS_CLIENT_SECRET`, `KIWI_API_KEY`.
-2. **n8n**: `n8n-workflow.json` importieren, Gmail-Credential verbinden und die
-   Umgebungsvariablen `MONITOR_SECRET` (= `N8N_SHARED_SECRET`) und
-   `ALARM_EMPFAENGER` setzen. Workflow aktivieren.
-3. Fertig — der Workflow `monitor.yml` läuft täglich um 06:00 UTC oder manuell
+2. **n8n**: `n8n-workflow.json` importieren, im Knoten "Mail senden" ein
+   SMTP-Credential anlegen (Gmail-App-Passwort, smtp.gmail.com:465), im Knoten
+   "Secret prüfen" das Geheimnis (= `N8N_SHARED_SECRET`) und im Mail-Knoten die
+   Empfängeradresse eintragen. Workflow veröffentlichen.
+3. Fertig — der Workflow `monitor.yml` läuft zweimal täglich (06:00 und 18:00 UTC) oder manuell
    über *Run workflow*.
 
 ## Lokal testen
