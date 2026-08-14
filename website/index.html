@@ -276,6 +276,24 @@ section { padding: 40px 0; }
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
   color: var(--gold); text-transform: uppercase;
 }
+.stay .foto.bar {
+  background:
+    linear-gradient(180deg, rgba(7, 17, 28, 0.1), rgba(7, 17, 28, 0.85)),
+    linear-gradient(135deg, #3f1d2c 0%, #0d1926 60%, #3a2c14 100%);
+}
+.stay .foto.rest {
+  background:
+    linear-gradient(180deg, rgba(7, 17, 28, 0.1), rgba(7, 17, 28, 0.85)),
+    linear-gradient(135deg, #14303a 0%, #0d1926 55%, #3f1d2c 100%);
+}
+.top-liste { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.top-liste li { display: flex; gap: 12px; align-items: baseline; }
+.top-liste .nr {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  color: var(--gold); flex: 0 0 auto;
+}
+.top-liste b { font-weight: 600; font-size: 14px; }
+.top-liste span { color: var(--text-2); font-size: 12.5px; }
 
 /* ============ Kosten / Schwellen ============ */
 .thresholds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); }
@@ -439,8 +457,10 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
         </div>
       </div>
       <p class="flights-note">
-        Preise füllt der Monitor: Sobald <b>preis_historie.json</b> im Repo liegt, zeigt diese
-        Seite die besten bekannten Preise pro Reisefenster. Bis dahin: Geduld — der Automat arbeitet.
+        Der Monitor füllt diesen Vergleich Lauf für Lauf: <b>je Strecke</b> (AMS/FMO,
+        via FRA, MUC oder ZRH) das günstigste bekannte First-Angebot. Jeden Morgen
+        wird ein Teil des Dezembers gescannt — der Vergleich wird also von Tag zu
+        Tag vollständiger.
       </p>
     </div>
   </section>
@@ -487,6 +507,36 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
             <div class="stay-fuss">Essen. Trinken. Status retten.</div>
           </div>
         </div>
+        <div class="card stay">
+          <div class="foto rest">
+            <span class="tag-chip">TISCH FÜR ZWEI</span>
+            <span class="ort">Johannesburg · Restaurants</span>
+          </div>
+          <div class="stay-body">
+            <h3>Top 3 Restaurants</h3>
+            <ul class="top-liste">
+              <li><span class="nr">01</span><div><b>Marble</b><br><span>Rosebank — Grillkunst über offenem Feuer, die Institution der Stadt</span></div></li>
+              <li><span class="nr">02</span><div><b>Grei</b><br><span>The Saxon, Sandhurst — Fine Dining im wohl besten Hotel des Landes</span></div></li>
+              <li><span class="nr">03</span><div><b>Les Créatifs</b><br><span>Bryanston — französische Präzision, südafrikanische Seele</span></div></li>
+            </ul>
+            <div class="stay-fuss">Reservieren, sobald die Flüge stehen</div>
+          </div>
+        </div>
+        <div class="card stay">
+          <div class="foto bar">
+            <span class="tag-chip">LAST CALL 02:00</span>
+            <span class="ort">Johannesburg · Bars</span>
+          </div>
+          <div class="stay-body">
+            <h3>Top 3 Bars</h3>
+            <ul class="top-liste">
+              <li><span class="nr">01</span><div><b>Sin+Tax</b><br><span>Rosebank — versteckte Cocktailbar, regelmäßig unter Afrikas besten</span></div></li>
+              <li><span class="nr">02</span><div><b>Mootee Bar</b><br><span>Melville — Cocktails mit afrikanischer Botanik, laut und gut</span></div></li>
+              <li><span class="nr">03</span><div><b>The Marabi Club</b><br><span>Newtown — Live-Jazz, Kellergewölbe, Drinks wie 1930</span></div></li>
+            </ul>
+            <div class="stay-fuss">Öffnungszeiten vor Ort prüfen — Joburg wandelt sich schnell</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -528,32 +578,49 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
 </footer>
 
 <script>
-/* Beste Preise aus der Monitor-Historie laden (optional, mit Fallback) */
+/* Flugvergleich: bestes Angebot je Strecke aus top_angebote.json,
+   Fallback auf die Preishistorie */
 (async () => {
-  const QUELLE = "https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/preis_historie.json";
+  const BASIS = "https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/";
+  const lade = async n => {
+    const r = await fetch(BASIS + n);
+    return r.ok ? r.json() : null;
+  };
   try {
-    const r = await fetch(QUELLE);
-    if (!r.ok) return;
-    const hist = await r.json();
-    const beste = Object.entries(hist.beste_preise || {})
-      .map(([k, preis]) => {
-        const [hafen, hin, rueck] = k.split("|");
-        return { hafen, hin, rueck, preis };
-      })
-      .sort((a, b) => a.preis - b.preis)
-      .slice(0, 3);
-    if (!beste.length) return;
+    let karten = [];
+
+    const top = await lade("top_angebote.json");
+    if (top && (top.angebote || []).length) {
+      karten = top.angebote.slice(0, 6).map(a => ({
+        hafen: a.abflughafen, via: a.via,
+        hin: a.hinflug_datum, rueck: a.rueckflug_datum,
+        preis: a.preis_pro_person, quelle: a.quelle,
+      }));
+    } else {
+      const hist = await lade("preis_historie.json");
+      karten = Object.entries((hist || {}).beste_preise || {})
+        .map(([k, preis]) => {
+          const [hafen, hin, rueck] = k.split("|");
+          return { hafen, hin, rueck, preis, via: null, quelle: null };
+        })
+        .sort((a, b) => a.preis - b.preis)
+        .slice(0, 3);
+    }
+    if (!karten.length) return;
 
     const eur = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(n);
     const dat = iso => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
     const tage = (h, r) => Math.round((new Date(r) - new Date(h)) / 864e5);
+    const route = f => f.via === "Direkt" ? "Direktflug"
+      : (f.via ? `via ${f.via} · 1 Umstieg` : "");
 
-    document.getElementById("flight-cards").innerHTML = beste.map((f, i) => `
+    document.getElementById("flight-cards").innerHTML = karten.map((f, i) => `
       <div class="card flight ${i === 0 ? "best" : ""}">
         ${i === 0 ? '<span class="tag">BESTER DEAL</span>' :
           (i === 1 ? '<span class="tag saver">STATUS RETTER</span>' : "")}
         <div class="route-s">${f.hafen} <em>✈</em> JNB</div>
-        <div class="meta">Lufthansa First<br>${dat(f.hin)} – ${dat(f.rueck)} · ${tage(f.hin, f.rueck)} Tage</div>
+        <div class="meta">First Class${f.via ? " · " + route(f) : ""}<br>
+          ${dat(f.hin)} – ${dat(f.rueck)} · ${tage(f.hin, f.rueck)} Tage${f.quelle ? " · " + f.quelle : ""}</div>
         <div class="price-row">
           <span class="price">${eur(f.preis)} € <small>p. P.</small></span>
           <span class="points">+ STATUS</span>

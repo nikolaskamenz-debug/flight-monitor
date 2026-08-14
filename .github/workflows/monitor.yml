@@ -2,8 +2,9 @@ name: MEILENFLUCHT — JNB First Class Monitor
 
 on:
   schedule:
-    # 06:00 UTC = 08:00 MEZ (im Sommer 07:00 UTC-Verschiebung beachten)
+    # 08:00 und 20:00 Berliner Sommerzeit (im Winter 07:00/19:00 lokal)
     - cron: "0 6 * * *"
+    - cron: "0 18 * * *"
   workflow_dispatch:
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
         run: |
           git config user.name  "jnb-monitor"
           git config user.email "actions@github.com"
-          git add preis_historie.json
+          git add preis_historie.json top_angebote.json
           git diff --staged --quiet || git commit -m "Preisstand $(date +%F)"
           git pull --rebase origin main
           git push

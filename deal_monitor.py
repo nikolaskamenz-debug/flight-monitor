@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from dataclasses import dataclass, asdict
 from datetime import date, datetime, timedelta
@@ -234,6 +235,68 @@ def passt(a: Angebot) -> bool:
 
 
 # --------------------------------------------------------------------------
+# Website-Daten — bestes Angebot je Strecke (Abflughafen + Via)
+# --------------------------------------------------------------------------
+
+WEB_DATEI = "top_angebote.json"
+
+
+def _qualitaet(a: Angebot) -> bool:
+    """Wie passt(), aber ohne Preisschwelle — für den Marktüberblick."""
+    f = CONFIG["filter"]
+    if f["first_auf_langstrecke_pflicht"] and a.kabine_langstrecke != "FIRST":
+        return False
+    return (a.umsteige_hin <= f["max_umsteige_hinflug"]
+            and a.umsteige_rueck <= f["max_umsteige_rueckflug"])
+
+
+def _via(a: Angebot) -> str:
+    """Umsteigeort aus dem ersten Hinflug-Segment ziehen."""
+    erster = a.fluege_hin.split(",")[0]
+    m = re.search(r"([A-Z]{3})-([A-Z]{3})", erster)
+    if not m or m.group(2) == CONFIG["reise"]["ziel"]:
+        return "Direkt"
+    return m.group(2)
+
+
+def webseite_daten_schreiben(alle: list[Angebot]) -> None:
+    """Rollierender Bestand für den Flugvergleich auf meilenflucht.de."""
+    p = BASIS / WEB_DATEI
+    bestand: dict = {}
+    if p.exists():
+        for e in json.loads(p.read_text(encoding="utf-8")).get("angebote", []):
+            bestand[(e["abflughafen"], e["via"])] = e
+
+    heute = date.today()
+    for a in alle:
+        if not _qualitaet(a):
+            continue
+        e = {
+            **asdict(a),
+            "via": _via(a),
+            "aufenthalt_tage": a.aufenthalt_tage,
+            "preis_gesamt": a.preis_gesamt,
+            "stand": heute.isoformat(),
+        }
+        k = (e["abflughafen"], e["via"])
+        alt = bestand.get(k)
+        if alt is None or e["preis_pro_person"] < alt["preis_pro_person"]:
+            bestand[k] = e
+
+    frisch = [
+        e for e in bestand.values()
+        if date.fromisoformat(e["hinflug_datum"]) >= heute
+        and (heute - date.fromisoformat(e.get("stand", "1970-01-01"))).days <= 14
+    ]
+    frisch.sort(key=lambda e: e["preis_pro_person"])
+    p.write_text(json.dumps(
+        {"erzeugt_am": datetime.now().isoformat(timespec="seconds"),
+         "angebote": frisch[:12]},
+        indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Website-Daten: {len(frisch[:12])} Strecken in {WEB_DATEI}")
+
+
+# --------------------------------------------------------------------------
 # Historie — verhindert, dass täglich dieselbe Mail kommt
 # --------------------------------------------------------------------------
 
@@ -324,6 +387,7 @@ def main() -> None:
 
     alle = angebote_holen()
     print(f"{len(alle)} Angebote geprüft")
+    webseite_daten_schreiben(alle)
 
     passende = [a for a in alle if passt(a)]
     print(f"{len(passende)} unter Schwellwert "
