@@ -305,6 +305,23 @@ section { padding: 40px 0; }
 .threshold.alarm .num { color: var(--silver); }
 .threshold.book .num { color: var(--gold); }
 .threshold.watch .num { color: var(--text); }
+.vor-ort { margin-top: var(--gap); }
+.preisliste { display: grid; gap: 0; }
+.preisliste .zeile {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 18px;
+  padding: 9px 0; border-bottom: 1px solid var(--card-edge);
+  align-items: baseline; font-size: 13.5px;
+}
+.preisliste .zeile:last-child { border-bottom: none; }
+.preisliste .was { color: var(--text); }
+.preisliste .zar { font-family: var(--font-mono); color: var(--text-2); font-size: 12px; }
+.preisliste .eur { font-family: var(--font-mono); font-weight: 600; color: var(--gold); }
+.vor-ort .quelle-zeile {
+  margin-top: 14px; font-size: 11.5px; color: var(--text-2);
+}
+.vor-ort .quelle-zeile a { border-bottom: 1px dotted var(--text-2); }
+.vor-ort h3 { font-family: var(--font-serif); font-size: 20px; margin-bottom: 4px; }
+.vor-ort .untertitel { color: var(--text-2); font-size: 13px; margin-bottom: 14px; }
 
 /* ============ Footer ============ */
 footer {
@@ -559,6 +576,26 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
         <div class="card threshold book">
           <div class="num">5.000 € <small>p. P.</small></div>
           <p>Sofort prüfen. Solche Preise sind meist innerhalb weniger Stunden weg. Erst buchen, dann freuen.</p>
+        </div>
+      </div>
+
+      <div class="card vor-ort">
+        <h3>Und vor Ort? Die Kleingeld-Kasse.</h3>
+        <div class="untertitel">Der große Posten ist der Flug — unten angekommen, lebt es sich erstaunlich günstig.</div>
+        <div class="preisliste">
+          <div class="zeile"><span class="was">Benzin, 1 Liter</span><span class="zar">R 19–25</span><span class="eur">1,00–1,35 €</span></div>
+          <div class="zeile"><span class="was">Hauptgericht, gutes Restaurant</span><span class="zar">R 80–140</span><span class="eur">4,30–7,50 €</span></div>
+          <div class="zeile"><span class="was">Filetsteak</span><span class="zar">ab R 160</span><span class="eur">ab 8,60 €</span></div>
+          <div class="zeile"><span class="was">3-Gänge-Menü, gehoben</span><span class="zar">ab R 400</span><span class="eur">ab 21,40 €</span></div>
+          <div class="zeile"><span class="was">Flasche Hauswein</span><span class="zar">ab R 120</span><span class="eur">ab 6,40 €</span></div>
+          <div class="zeile"><span class="was">Guter Rotwein, Flasche</span><span class="zar">ab R 200</span><span class="eur">ab 10,70 €</span></div>
+          <div class="zeile"><span class="was">Bier vom Fass, 0,5 l</span><span class="zar">ab R 35</span><span class="eur">ab 1,90 €</span></div>
+          <div class="zeile"><span class="was">Bier, Flasche 0,33 l</span><span class="zar">R 28</span><span class="eur">1,50 €</span></div>
+          <div class="zeile"><span class="was">Supermarkt / Lebensmittel</span><span class="zar">—</span><span class="eur">≈ EU-Niveau, teils darüber</span></div>
+        </div>
+        <div class="quelle-zeile">
+          Preise: <a href="https://www.kapstadt.de/reise/vorbereitungen/was-kostet-die-suedafrika-reise/aufenthaltskosten" target="_blank" rel="noopener">kapstadt.de</a>
+          · Umrechnung: EZB-Kurs vom 14.08.2026 (1 € ≈ 18,70 Rand) · Momentaufnahme ohne Gewähr
         </div>
       </div>
     </div>
