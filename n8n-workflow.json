@@ -1,0 +1,122 @@
+{
+  "name": "MEILENFLUCHT — JNB First Class Preisalarm",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "jnb-first-alarm",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Treffer empfangen",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ],
+      "webhookId": "jnb-first-alarm"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "secret",
+              "leftValue": "={{ $json.headers['x-monitor-secret'] }}",
+              "rightValue": "={{ $env.MONITOR_SECRET }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "auth",
+      "name": "Secret prüfen",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $input.first().json.body;\n\nconst eur = n => new Intl.NumberFormat('de-DE', {\n  style: 'currency', currency: 'EUR', maximumFractionDigits: 0\n}).format(n);\n\nconst datum = iso => new Date(iso).toLocaleDateString('de-DE', {\n  weekday: 'short', day: '2-digit', month: 'short'\n});\n\nconst farbe = d.dringend ? '#b91c1c' : '#1d4ed8';\n\nconst zeilen = d.angebote.map((a, i) => `\n  <tr style=\"background:${i % 2 ? '#f8fafc' : '#fff'}\">\n    <td style=\"padding:10px 12px;font-weight:600\">${a.abflughafen}</td>\n    <td style=\"padding:10px 12px\">${datum(a.hinflug_datum)} &rarr; ${datum(a.rueckflug_datum)}<br>\n        <span style=\"color:#64748b;font-size:12px\">${a.aufenthalt_tage} Tage</span></td>\n    <td style=\"padding:10px 12px;text-align:right;font-weight:600\">${eur(a.preis_pro_person)}</td>\n    <td style=\"padding:10px 12px;text-align:right;color:#64748b\">${eur(a.preis_gesamt)}</td>\n    <td style=\"padding:10px 12px;font-size:12px;color:#64748b\">${a.fluege_hin} · ${a.quelle}</td>\n  </tr>`).join('');\n\nconst html = `\n<div style=\"font-family:-apple-system,Segoe UI,sans-serif;max-width:760px;color:#0f172a\">\n  <div style=\"font-size:22px;font-weight:800;letter-spacing:.5px\">MEILENFLUCHT ✈️</div>\n  <div style=\"color:#64748b;font-size:13px;margin-bottom:18px\">Essen. Trinken. Status retten.</div>\n  <div style=\"border-left:4px solid ${farbe};padding:12px 16px;background:#f8fafc;margin-bottom:20px\">\n    <div style=\"font-size:20px;font-weight:700\">${eur(d.bester_preis_pro_person)} pro Person</div>\n    <div style=\"color:#475569;margin-top:4px\">${eur(d.bester_preis_gesamt)} für ${d.passagiere} Personen · ${d.anzahl_treffer} Treffer</div>\n  </div>\n\n  ${d.dringend ? '<p style=\"background:#fef2f2;border:1px solid #fecaca;padding:12px;border-radius:6px;margin-bottom:20px\"><strong>Unter der Sofort-Schwelle.</strong> Solche Preise sind meist innerhalb weniger Stunden weg.</p>' : ''}\n\n  <table style=\"width:100%;border-collapse:collapse;font-size:14px\">\n    <thead>\n      <tr style=\"border-bottom:2px solid #e2e8f0;text-align:left\">\n        <th style=\"padding:8px 12px\">Ab</th>\n        <th style=\"padding:8px 12px\">Reisezeitraum</th>\n        <th style=\"padding:8px 12px;text-align:right\">p. P.</th>\n        <th style=\"padding:8px 12px;text-align:right\">Gesamt</th>\n        <th style=\"padding:8px 12px\">Verbindung</th>\n      </tr>\n    </thead>\n    <tbody>${zeilen}</tbody>\n  </table>\n\n  <p style=\"color:#64748b;font-size:12px;margin-top:24px;border-top:1px solid #e2e8f0;padding-top:12px\">\n    Ab AMS, CPH, ARN, OSL und FMO läuft der Zubringer nach FRA oder MUC in Business,\n    die Langstrecke in First.<br>\n    Preise sind Momentaufnahmen und ohne Gewähr. Erzeugt ${d.erzeugt_am}.\n  </p>\n</div>`;\n\nreturn [{ json: { betreff: d.betreff, html } }];"
+      },
+      "id": "format",
+      "name": "Mail aufbereiten",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.ALARM_EMPFAENGER }}",
+        "subject": "={{ $json.betreff }}",
+        "emailType": "html",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "gmail",
+      "name": "Gmail senden",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        220
+      ]
+    }
+  ],
+  "connections": {
+    "Treffer empfangen": {
+      "main": [
+        [
+          {
+            "node": "Secret prüfen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Secret prüfen": {
+      "main": [
+        [
+          {
+            "node": "Mail aufbereiten",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Mail aufbereiten": {
+      "main": [
+        [
+          {
+            "node": "Gmail senden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

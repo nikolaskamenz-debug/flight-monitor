@@ -1,0 +1,47 @@
+name: MEILENFLUCHT — JNB First Class Monitor
+
+on:
+  schedule:
+    # 06:00 UTC = 08:00 MEZ (im Sommer 07:00 UTC-Verschiebung beachten)
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Scan
+        env:
+          AMADEUS_CLIENT_ID: ${{ secrets.AMADEUS_CLIENT_ID }}
+          AMADEUS_CLIENT_SECRET: ${{ secrets.AMADEUS_CLIENT_SECRET }}
+          AMADEUS_ENV: ${{ vars.AMADEUS_ENV || 'test' }}
+          DUFFEL_API_KEY: ${{ secrets.DUFFEL_API_KEY }}
+          KIWI_API_KEY: ${{ secrets.KIWI_API_KEY }}
+          TRAVELPAYOUTS_TOKEN: ${{ secrets.TRAVELPAYOUTS_TOKEN }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          LH_CLIENT_ID: ${{ secrets.LH_CLIENT_ID }}
+          LH_CLIENT_SECRET: ${{ secrets.LH_CLIENT_SECRET }}
+          N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+          N8N_SHARED_SECRET: ${{ secrets.N8N_SHARED_SECRET }}
+        run: python deal_monitor.py
+
+      - name: Preishistorie sichern
+        run: |
+          git config user.name  "jnb-monitor"
+          git config user.email "actions@github.com"
+          git add preis_historie.json
+          git diff --staged --quiet || git commit -m "Preisstand $(date +%F)"
+          git pull --rebase origin main
+          git push

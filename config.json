@@ -1,16 +1,54 @@
 {
-  "email_config": {
-    "sender_email": "nikolas@googlemail.com",
-    "email_password": "xxxx xxxx xxxx xxxx",
-    "email_to": "nikolas@googlemail.com"
+  "reise": {
+    "beschreibung": "MEILENFLUCHT — Johannesburg Dezember, First Class, mit Thankmar",
+    "passagiere": 2,
+    "kabine": "FIRST",
+    "ziel": "JNB"
   },
-  "routes": [
-    {"id": "fra_jnb", "departure": "FRA", "arrival": "JNB", "max_price_eur": 1800, "active": true},
-    {"id": "muc_jnb", "departure": "MUC", "arrival": "JNB", "max_price_eur": 1750, "active": true},
-    {"id": "fmo_jnb", "departure": "FMO", "arrival": "JNB", "max_price_eur": 1600, "active": true},
-    {"id": "ams_jnb", "departure": "AMS", "arrival": "JNB", "max_price_eur": 1650, "active": true},
-    {"id": "osl_jnb", "departure": "OSL", "arrival": "JNB", "max_price_eur": 1600, "active": true},
-    {"id": "arn_jnb", "departure": "ARN", "arrival": "JNB", "max_price_eur": 1550, "active": true},
-    {"id": "cph_jnb", "departure": "CPH", "arrival": "JNB", "max_price_eur": 1600, "active": true}
-  ]
+
+  "abflughaefen": ["AMS", "FMO"],
+
+  "zeitraum": {
+    "hinflug_von": "2026-12-01",
+    "hinflug_bis": "2026-12-31",
+    "rueckflug_von": "2026-12-05",
+    "rueckflug_bis": "2027-01-15",
+    "aufenthalt_min_tage": 5,
+    "aufenthalt_max_tage": 10
+  },
+
+  "schwellwerte": {
+    "_kommentar": "Preis pro Person, Hin- und Rückflug zusammen, in Euro.",
+    "alarm_ab": 7500,
+    "sofort_buchen": 6000,
+    "nur_besser_als_letzter_alarm": true,
+    "mindestverbesserung_eur": 200
+  },
+
+  "filter": {
+    "max_umsteige_hinflug": 1,
+    "max_umsteige_rueckflug": 1,
+    "first_auf_langstrecke_pflicht": true,
+    "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA oder MUC immer Business, nicht First. Das ist normal und kein Ausschlussgrund."
+  },
+
+  "quellen": {
+    "airlines": ["LH"],
+    "max_angebote_pro_abfrage": 5,
+    "api_calls_pro_lauf": {
+      "_kommentar": "Amadeus am Test-Kontingent (~2000 Calls/Monat) ausgerichtet, SerpAPI an den 100 Gratis-Suchen/Monat. Duffel/Kiwi/Travelpayouts-Suchen sind kostenlos, nur ratenlimitiert.",
+      "amadeus": 65,
+      "duffel": 120,
+      "kiwi": 120,
+      "travelpayouts": 120,
+      "serpapi": 3
+    }
+  },
+
+  "n8n": {
+    "webhook_url_env": "N8N_WEBHOOK_URL",
+    "shared_secret_env": "N8N_SHARED_SECRET"
+  },
+
+  "state_datei": "preis_historie.json"
 }
