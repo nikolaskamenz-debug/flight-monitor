@@ -1,3 +1,4 @@
 __pycache__/
 *.log
 flights.db
+n8n-workflow.lokal.json

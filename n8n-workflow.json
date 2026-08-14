@@ -64,15 +64,16 @@
     },
     {
       "parameters": {
-        "sendTo": "={{ $env.ALARM_EMPFAENGER }}",
+        "fromEmail": "={{ $env.ALARM_EMPFAENGER }}",
+        "toEmail": "={{ $env.ALARM_EMPFAENGER }}",
         "subject": "={{ $json.betreff }}",
-        "emailType": "html",
-        "message": "={{ $json.html }}",
+        "emailFormat": "html",
+        "html": "={{ $json.html }}",
         "options": {}
       },
-      "id": "gmail",
-      "name": "Gmail senden",
-      "type": "n8n-nodes-base.gmail",
+      "id": "smtp",
+      "name": "Mail senden",
+      "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
         900,
@@ -108,7 +109,7 @@
       "main": [
         [
           {
-            "node": "Gmail senden",
+            "node": "Mail senden",
             "type": "main",
             "index": 0
           }
