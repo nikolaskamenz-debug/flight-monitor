@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 
 import requests
 
@@ -41,6 +42,18 @@ def verfuegbar() -> bool:
     return bool(os.environ.get("DUFFEL_API_KEY"))
 
 
+_letzte_anfrage = 0.0
+_MIN_ABSTAND_S = 1.2      # Duffel drosselt Dauerfeuer; sanft takten
+
+
+def _takten() -> None:
+    global _letzte_anfrage
+    wartezeit = _letzte_anfrage + _MIN_ABSTAND_S - time.monotonic()
+    if wartezeit > 0:
+        time.sleep(wartezeit)
+    _letzte_anfrage = time.monotonic()
+
+
 def suche_fluege(abflug, ziel, hin, rueck, *, kabine="FIRST", passagiere=2,
                  airlines=("LH",), max_angebote=5) -> list[dict]:
     """Ein API-Call pro Datumspaar; gleiche Rückgabe wie die anderen Quellen."""
@@ -56,16 +69,21 @@ def suche_fluege(abflug, ziel, hin, rueck, *, kabine="FIRST", passagiere=2,
             "cabin_class": kabine.lower(),
         }
     }
-    r = requests.post(
-        _URL,
-        params={"return_offers": "true"},
-        json=rumpf,
-        headers={
-            "Authorization": f"Bearer {os.environ['DUFFEL_API_KEY']}",
-            "Duffel-Version": "v2",
-        },
-        timeout=60,
-    )
+    kopf = {
+        "Authorization": f"Bearer {os.environ['DUFFEL_API_KEY']}",
+        "Duffel-Version": "v2",
+    }
+    _takten()
+    r = requests.post(_URL, params={"return_offers": "true"},
+                      json=rumpf, headers=kopf, timeout=60)
+    if r.status_code == 429:
+        # einmal abwarten und wiederholen, erst danach aufgeben
+        pause = min(float(r.headers.get("Retry-After") or 10), 30)
+        logger.warning("Duffel drosselt — warte %.0f s und wiederhole", pause)
+        time.sleep(pause)
+        _takten()
+        r = requests.post(_URL, params={"return_offers": "true"},
+                          json=rumpf, headers=kopf, timeout=60)
     if r.status_code == 429:
         raise KontingentErschoepft(r.text[:300])
     if r.status_code not in (200, 201):
