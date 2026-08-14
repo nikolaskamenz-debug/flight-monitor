@@ -227,6 +227,9 @@ section { padding: 40px 0; }
   display: flex; justify-content: space-between; align-items: baseline;
 }
 .flight .price { font-family: var(--font-mono); font-weight: 600; font-size: 22px; }
+.flight.leer .price { color: var(--text-2); font-weight: 500; }
+.flight.leer .route-s { opacity: 0.55; }
+.flight.leer .meta em { font-style: normal; color: var(--text-2); }
 .flight .price small { font-size: 12px; color: var(--text-2); font-weight: 500; }
 .flight .points { font-family: var(--font-mono); font-size: 12px; color: var(--gold); font-weight: 600; }
 .flights-note { margin-top: 18px; font-size: 13px; color: var(--text-2); }
@@ -447,32 +450,31 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
     <div class="wrap">
       <div class="eyebrow">Flugvergleich · Beste bekannte Preise</div>
       <div class="flights" id="flight-cards">
-        <!-- Fallback-Karten; werden durch Live-Daten ersetzt, wenn preis_historie.json erreichbar ist -->
-        <div class="card flight best">
-          <span class="tag">BESTER DEAL</span>
+        <!-- Feste Strecken-Slots; das Skript füllt gefundene Preise ein -->
+        <div class="card flight leer">
           <div class="route-s">AMS <em>✈</em> JNB</div>
-          <div class="meta">Lufthansa First · via FRA<br>1 Umstieg · 8 Tage Aufenthalt</div>
-          <div class="price-row">
-            <span class="price">— € <small>p. P.</small></span>
-            <span class="points">+ STATUS</span>
-          </div>
+          <div class="meta">First Class · via FRA<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
-        <div class="card flight">
-          <span class="tag saver">STATUS RETTER</span>
+        <div class="card flight leer">
+          <div class="route-s">AMS <em>✈</em> JNB</div>
+          <div class="meta">First Class · via MUC<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        </div>
+        <div class="card flight leer">
+          <div class="route-s">AMS <em>✈</em> JNB</div>
+          <div class="meta">First Class · via ZRH<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        </div>
+        <div class="card flight leer">
           <div class="route-s">FMO <em>✈</em> JNB</div>
-          <div class="meta">Lufthansa First · via MUC<br>1 Umstieg · 7 Tage Aufenthalt</div>
-          <div class="price-row">
-            <span class="price">— € <small>p. P.</small></span>
-            <span class="points">+ STATUS</span>
-          </div>
+          <div class="meta">First Class · via FRA<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
-        <div class="card flight">
-          <div class="route-s">AMS <em>✈</em> JNB</div>
-          <div class="meta">Lufthansa First · via FRA<br>1 Umstieg · 10 Tage Aufenthalt</div>
-          <div class="price-row">
-            <span class="price">— € <small>p. P.</small></span>
-            <span class="points">+ STATUS</span>
-          </div>
+        <div class="card flight leer">
+          <div class="route-s">FMO <em>✈</em> JNB</div>
+          <div class="meta">First Class · via MUC<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
       </div>
       <p class="flights-note">
@@ -617,55 +619,61 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
 </footer>
 
 <script>
-/* Flugvergleich: bestes Angebot je Strecke aus top_angebote.json,
-   Fallback auf die Preishistorie */
+/* Flugvergleich: feste Strecken-Slots, gefüllt aus top_angebote.json.
+   Slots ohne Fund zeigen "— € / Noch kein Schnäppchen gefunden". */
 (async () => {
-  const BASIS = "https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/";
-  const lade = async n => {
-    const r = await fetch(BASIS + n);
-    return r.ok ? r.json() : null;
-  };
+  const SLOTS = [
+    { hafen: "AMS", via: "FRA" },
+    { hafen: "AMS", via: "MUC" },
+    { hafen: "AMS", via: "ZRH" },
+    { hafen: "FMO", via: "FRA" },
+    { hafen: "FMO", via: "MUC" },
+  ];
   try {
-    let karten = [];
+    const r = await fetch("https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/top_angebote.json");
+    const top = r.ok ? await r.json() : { angebote: [] };
+    const daten = new Map();
+    (top.angebote || []).forEach(a => daten.set(a.abflughafen + "|" + a.via, a));
 
-    const top = await lade("top_angebote.json");
-    if (top && (top.angebote || []).length) {
-      karten = top.angebote.slice(0, 6).map(a => ({
-        hafen: a.abflughafen, via: a.via,
-        hin: a.hinflug_datum, rueck: a.rueckflug_datum,
-        preis: a.preis_pro_person, quelle: a.quelle,
-      }));
-    } else {
-      const hist = await lade("preis_historie.json");
-      karten = Object.entries((hist || {}).beste_preise || {})
-        .map(([k, preis]) => {
-          const [hafen, hin, rueck] = k.split("|");
-          return { hafen, hin, rueck, preis, via: null, quelle: null };
-        })
-        .sort((a, b) => a.preis - b.preis)
-        .slice(0, 3);
-    }
-    if (!karten.length) return;
+    // gefundene Strecken außerhalb der festen Slots hinten anhängen (z.B. Direktflug)
+    const extras = (top.angebote || []).filter(
+      a => !SLOTS.some(s => s.hafen === a.abflughafen && s.via === a.via));
+    const karten = SLOTS.map(s => ({ ...s, fund: daten.get(s.hafen + "|" + s.via) }))
+      .concat(extras.map(a => ({ hafen: a.abflughafen, via: a.via, fund: a })));
+
+    // Badges für die zwei günstigsten gefundenen Strecken
+    const gefunden = karten.filter(k => k.fund)
+      .sort((a, b) => a.fund.preis_pro_person - b.fund.preis_pro_person);
+    const badge = new Map();
+    if (gefunden[0]) badge.set(gefunden[0], '<span class="tag">BESTER DEAL</span>');
+    if (gefunden[1]) badge.set(gefunden[1], '<span class="tag saver">STATUS RETTER</span>');
 
     const eur = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(n);
     const dat = iso => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
-    const tage = (h, r) => Math.round((new Date(r) - new Date(h)) / 864e5);
-    const route = f => f.via === "Direkt" ? "Direktflug"
-      : (f.via ? `via ${f.via} · 1 Umstieg` : "");
+    const tage = (h, r2) => Math.round((new Date(r2) - new Date(h)) / 864e5);
+    const route = via => via === "Direkt" ? "Direktflug" : `via ${via} · 1 Umstieg`;
 
-    document.getElementById("flight-cards").innerHTML = karten.map((f, i) => `
-      <div class="card flight ${i === 0 ? "best" : ""}">
-        ${i === 0 ? '<span class="tag">BESTER DEAL</span>' :
-          (i === 1 ? '<span class="tag saver">STATUS RETTER</span>' : "")}
-        <div class="route-s">${f.hafen} <em>✈</em> JNB</div>
-        <div class="meta">First Class${f.via ? " · " + route(f) : ""}<br>
-          ${dat(f.hin)} – ${dat(f.rueck)} · ${tage(f.hin, f.rueck)} Tage${f.quelle ? " · " + f.quelle : ""}</div>
+    document.getElementById("flight-cards").innerHTML = karten.map(k => {
+      const f = k.fund;
+      if (!f) return `
+      <div class="card flight leer">
+        <div class="route-s">${k.hafen} <em>✈</em> JNB</div>
+        <div class="meta">First Class · ${route(k.via)}<br><em>Noch kein Schnäppchen gefunden</em></div>
+        <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+      </div>`;
+      return `
+      <div class="card flight ${badge.has(k) && badge.get(k).includes("BESTER") ? "best" : ""}">
+        ${badge.get(k) || ""}
+        <div class="route-s">${k.hafen} <em>✈</em> JNB</div>
+        <div class="meta">First Class · ${route(k.via)}<br>
+          ${dat(f.hinflug_datum)} – ${dat(f.rueckflug_datum)} · ${tage(f.hinflug_datum, f.rueckflug_datum)} Tage · ${f.quelle}</div>
         <div class="price-row">
-          <span class="price">${eur(f.preis)} € <small>p. P.</small></span>
+          <span class="price">${eur(f.preis_pro_person)} € <small>p. P.</small></span>
           <span class="points">+ STATUS</span>
         </div>
-      </div>`).join("");
-  } catch (e) { /* Fallback-Karten bleiben stehen */ }
+      </div>`;
+    }).join("");
+  } catch (e) { /* statische Slots bleiben stehen */ }
 })();
 </script>
 
