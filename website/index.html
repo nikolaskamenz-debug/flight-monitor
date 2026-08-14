@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEILENFLUCHT ✈ — Essen. Trinken. Status retten.</title>
+<meta name="description" content="MEILENFLUCHT — das private First-Class-Portal. Mission Dezember: Johannesburg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ MEILENFLUCHT Design-Tokens ============ */
+:root {
+  /* Farben */
+  --bg: #07111C;
+  --card: #0D1926;
+  --card-edge: rgba(245, 241, 232, 0.08);
+  --text: #F5F1E8;
+  --text-2: #A8ADB3;
+  --gold: #C9A24A;
+  --silver: #B7BDC5;
+  --ink: #111111;
+  --cream: #E8DDC8;
+  --stamp: #9C3028;
+
+  /* Status */
+  --status-ft: var(--silver);
+  --status-sen: var(--gold);
+  --status-hon: #F5F1E8;
+
+  /* Typografie */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Raster */
+  --radius: 10px;
+  --pad: 28px;
+  --gap: 24px;
+  --maxw: 1140px;
+  --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ============ Navigation ============ */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(7, 17, 28, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-edge);
+}
+.nav {
+  display: flex; align-items: center; gap: 32px;
+  height: 68px;
+}
+.brand {
+  font-family: var(--font-mono); font-weight: 600;
+  letter-spacing: 0.14em; font-size: 15px; white-space: nowrap;
+}
+.brand span { color: var(--gold); }
+.nav-links { display: flex; gap: 26px; flex: 1; }
+.nav-links a {
+  color: var(--text-2); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.02em; transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-user { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.nav-user .name { color: var(--text-2); }
+.badge {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; padding: 5px 10px; border-radius: 5px;
+  border: 1px solid var(--status-sen); color: var(--status-sen);
+}
+
+/* ============ Hero ============ */
+.hero { padding: 96px 0 56px; position: relative; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(201, 162, 74, 0.07), transparent),
+    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(183, 189, 197, 0.04), transparent);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(40px, 6vw, 68px); line-height: 1.08;
+  max-width: 14ch;
+}
+.hero p.sub {
+  margin-top: 22px; max-width: 52ch; color: var(--text-2); font-size: 17px;
+}
+.hero p.sub strong { color: var(--text); font-weight: 600; }
+.hero-flex { display: flex; align-items: flex-start; gap: var(--gap); position: relative; }
+.hero-left { flex: 1 1 auto; }
+.stamp {
+  font-family: var(--font-mono); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.18em; color: var(--stamp);
+  border: 2px solid var(--stamp); border-radius: 6px;
+  padding: 8px 14px; display: inline-block;
+  transform: rotate(-6deg); opacity: 0.85;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='white'/%3E%3C/svg%3E");
+  margin-top: 34px;
+}
+
+/* ============ Cards allgemein ============ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: var(--shadow);
+}
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; color: var(--text-2); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+section { padding: 40px 0; }
+.grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--gap); align-items: stretch; }
+
+/* ============ Statuskarte ============ */
+.status-card .level {
+  font-family: var(--font-mono); font-size: 22px; font-weight: 600;
+  letter-spacing: 0.22em; color: var(--status-sen);
+}
+.status-card .points { margin-top: 6px; color: var(--text-2); font-size: 14px; }
+.status-card .points b { color: var(--text); font-weight: 600; }
+.bar {
+  margin-top: 18px; height: 6px; border-radius: 3px;
+  background: rgba(245, 241, 232, 0.08); overflow: hidden;
+}
+.bar i {
+  display: block; height: 100%; width: 93.6%;
+  background: linear-gradient(90deg, #8a6d2c, var(--gold));
+  border-radius: 3px;
+}
+.status-card .quip { margin-top: 16px; font-size: 14px; color: var(--text-2); font-style: italic; }
+.status-legend { margin-top: 22px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-2); }
+.status-legend span { display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ============ Boarding Pass ============ */
+.pass {
+  background: var(--cream); color: var(--ink);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid; grid-template-columns: 1fr 240px;
+}
+.pass-main { padding: var(--pad); }
+.pass-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 20px;
+}
+.pass-head .airline { font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.2em; font-size: 13px; }
+.pass-head .class { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--stamp); font-weight: 600; }
+.route {
+  display: flex; align-items: center; gap: 20px;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: clamp(40px, 5vw, 56px); letter-spacing: 0.04em;
+}
+.route .arrow { font-size: 0.5em; color: var(--stamp); }
+.pass-meta {
+  margin-top: 22px; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 14px;
+}
+.pass-meta div b {
+  display: block; font-family: var(--font-mono); font-size: 15px; font-weight: 600;
+}
+.pass-meta div span {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #5a544a;
+}
+.pass-stub {
+  border-left: 2px dashed rgba(17, 17, 17, 0.35);
+  padding: var(--pad) 22px; position: relative;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+}
+.pass-stub::before, .pass-stub::after {
+  content: ""; position: absolute; left: -11px; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--bg);
+}
+.pass-stub::before { top: -10px; }
+.pass-stub::after { bottom: -10px; }
+.stub-code { font-family: var(--font-mono); font-weight: 600; font-size: 20px; }
+.stub-note { font-size: 11px; color: #5a544a; line-height: 1.5; }
+.barcode {
+  height: 44px;
+  background: repeating-linear-gradient(90deg,
+    var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 7px, transparent 7px 8px,
+    var(--ink) 8px 9px, transparent 9px 12px);
+  border-radius: 2px;
+}
+.tagline-tag {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em;
+  color: var(--stamp); font-weight: 600;
+}
+
+/* ============ Flugvergleich ============ */
+.flights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); }
+.flight { position: relative; display: flex; flex-direction: column; gap: 14px; }
+.flight.best { border-color: rgba(201, 162, 74, 0.45); }
+.flight .tag {
+  position: absolute; top: -11px; left: 22px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; padding: 4px 10px; border-radius: 4px;
+  background: var(--gold); color: var(--ink);
+}
+.flight .tag.saver { background: var(--silver); }
+.flight .route-s {
+  font-family: var(--font-mono); font-weight: 600; font-size: 26px; letter-spacing: 0.04em;
+}
+.flight .route-s em { font-style: normal; color: var(--gold); font-size: 0.6em; vertical-align: middle; padding: 0 4px; }
+.flight .meta { color: var(--text-2); font-size: 13.5px; line-height: 1.7; }
+.flight .price-row {
+  margin-top: auto; padding-top: 14px; border-top: 1px solid var(--card-edge);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.flight .price { font-family: var(--font-mono); font-weight: 600; font-size: 22px; }
+.flight .price small { font-size: 12px; color: var(--text-2); font-weight: 500; }
+.flight .points { font-family: var(--font-mono); font-size: 12px; color: var(--gold); font-weight: 600; }
+.flights-note { margin-top: 18px; font-size: 13px; color: var(--text-2); }
+.flights-note b { color: var(--text); }
+
+/* ============ Kosten / Schwellen ============ */
+.thresholds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); }
+.threshold .num { font-family: var(--font-mono); font-weight: 600; font-size: 34px; }
+.threshold .num small { font-size: 14px; color: var(--text-2); font-weight: 500; }
+.threshold p { color: var(--text-2); font-size: 13.5px; margin-top: 8px; }
+.threshold.alarm .num { color: var(--silver); }
+.threshold.book .num { color: var(--gold); }
+.threshold.watch .num { color: var(--text); }
+
+/* ============ Footer ============ */
+footer {
+  margin-top: 56px; border-top: 1px solid var(--card-edge);
+  padding: 40px 0 56px; color: var(--text-2); font-size: 13px;
+}
+.footer-flex { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+footer .motto { font-family: var(--font-serif); font-size: 17px; color: var(--text); }
+footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; }
+
+/* ============ Responsive ============ */
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 640px) {
+  :root { --pad: 20px; }
+  .hero { padding: 64px 0 36px; }
+  .pass { grid-template-columns: 1fr; }
+  .pass-stub {
+    border-left: none; border-top: 2px dashed rgba(17, 17, 17, 0.35);
+    flex-direction: row; align-items: center;
+  }
+  .pass-stub::before { top: -10px; left: -10px; }
+  .pass-stub::after { top: -10px; left: auto; right: -10px; bottom: auto; }
+  .barcode { flex: 1; height: 34px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">MEILENFLUCHT <span>✈</span></a>
+    <nav class="nav-links">
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#trip">Trips</a>
+      <a href="#fluege">Flüge</a>
+      <a href="#status">Status</a>
+      <a href="#kosten">Kosten</a>
+    </nav>
+    <div class="nav-user">
+      <span class="name">N.&nbsp;Kamenz</span>
+      <span class="badge">SENATOR</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" id="dashboard">
+    <div class="wrap hero-flex">
+      <div class="hero-left">
+        <h1>Die letzten Meilen.<br>Die besten Momente.</h1>
+        <p class="sub">
+          <strong>Mission Dezember:</strong> Zwei Sitze in der First nach Johannesburg,
+          fünf bis zehn Tage Sommer im Dezember. Der Monitor wacht täglich um 08:00 —
+          gemeldet wird nur, was sich wirklich lohnt.
+        </p>
+        <span class="stamp">MISSION DEZEMBER · APPROVED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status + Boarding Pass -->
+  <section id="trip">
+    <div class="wrap grid-2">
+
+      <!-- Boarding Pass -->
+      <div>
+        <div class="eyebrow" id="status">Nächster Trip</div>
+        <div class="pass">
+          <div class="pass-main">
+            <div class="pass-head">
+              <span class="airline">DEZEMBERFLUCHT 2026</span>
+              <span class="class">FIRST CLASS</span>
+            </div>
+            <div class="route">
+              <span>AMS</span><span class="arrow">✈</span><span>JNB</span>
+            </div>
+            <div class="pass-meta">
+              <div><b>LH 572</b><span>Flug</span></div>
+              <div><b>DEC 26</b><span>Zeitraum</span></div>
+              <div><b>2 PAX</b><span>N. + T.</span></div>
+              <div><b>5–10</b><span>Tage</span></div>
+              <div><b>MAX 1</b><span>Umstieg</span></div>
+            </div>
+          </div>
+          <div class="pass-stub">
+            <div>
+              <div class="stub-code">AMS→JNB</div>
+              <div class="tagline-tag">ALT: FMO→JNB</div>
+            </div>
+            <div class="stub-note">Zubringer Business, Langstrecke First. Das ist normal und kein Grund zur Panik.</div>
+            <div class="barcode" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statuskarte -->
+      <div>
+        <div class="eyebrow">Statuskonto</div>
+        <div class="card status-card">
+          <div class="level">SENATOR</div>
+          <div class="points"><b>9.360</b> / 10.000 Points</div>
+          <div class="bar"><i></i></div>
+          <div class="quip">Noch 640 Points. Das bekommen wir hin.</div>
+          <div class="status-legend">
+            <span><i class="dot" style="background:var(--status-ft)"></i> Frequent Traveller</span>
+            <span><i class="dot" style="background:var(--status-sen)"></i> Senator</span>
+            <span><i class="dot" style="background:var(--status-hon); outline:1px solid #333"></i> HON Circle</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Flugvergleich -->
+  <section id="fluege">
+    <div class="wrap">
+      <div class="eyebrow">Flugvergleich · Beste bekannte Preise</div>
+      <div class="flights" id="flight-cards">
+        <!-- Fallback-Karten; werden durch Live-Daten ersetzt, wenn preis_historie.json erreichbar ist -->
+        <div class="card flight best">
+          <span class="tag">BESTER DEAL</span>
+          <div class="route-s">AMS <em>✈</em> JNB</div>
+          <div class="meta">Lufthansa First · via FRA<br>1 Umstieg · 8 Tage Aufenthalt</div>
+          <div class="price-row">
+            <span class="price">— € <small>p. P.</small></span>
+            <span class="points">+ STATUS</span>
+          </div>
+        </div>
+        <div class="card flight">
+          <span class="tag saver">STATUS RETTER</span>
+          <div class="route-s">FMO <em>✈</em> JNB</div>
+          <div class="meta">Lufthansa First · via MUC<br>1 Umstieg · 7 Tage Aufenthalt</div>
+          <div class="price-row">
+            <span class="price">— € <small>p. P.</small></span>
+            <span class="points">+ STATUS</span>
+          </div>
+        </div>
+        <div class="card flight">
+          <div class="route-s">AMS <em>✈</em> JNB</div>
+          <div class="meta">Lufthansa First · via FRA<br>1 Umstieg · 10 Tage Aufenthalt</div>
+          <div class="price-row">
+            <span class="price">— € <small>p. P.</small></span>
+            <span class="points">+ STATUS</span>
+          </div>
+        </div>
+      </div>
+      <p class="flights-note">
+        Preise füllt der Monitor: Sobald <b>preis_historie.json</b> im Repo liegt, zeigt diese
+        Seite die besten bekannten Preise pro Reisefenster. Bis dahin: Geduld — der Automat arbeitet.
+      </p>
+    </div>
+  </section>
+
+  <!-- Kosten -->
+  <section id="kosten">
+    <div class="wrap">
+      <div class="eyebrow">Kosten · Die Spielregeln</div>
+      <div class="thresholds">
+        <div class="card threshold watch">
+          <div class="num">Täglich <small>08:00</small></div>
+          <p>Der Monitor scannt jeden Morgen alle Quellen. Keine Treffer, keine Mail — Ruhe ist auch eine Information.</p>
+        </div>
+        <div class="card threshold alarm">
+          <div class="num">7.500 € <small>p. P.</small></div>
+          <p>Preisalarm. Ab hier wird gemeldet — aber nur, wenn es mindestens 200 € besser ist als alles bisher Gesehene.</p>
+        </div>
+        <div class="card threshold book">
+          <div class="num">6.000 € <small>p. P.</small></div>
+          <p>Sofort prüfen. Solche Preise sind meist innerhalb weniger Stunden weg. Erst buchen, dann freuen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-flex">
+    <div>
+      <div class="motto">Essen. Trinken. Status retten.</div>
+      <div style="margin-top:6px">Ein privates Reiseprojekt. Preise sind Momentaufnahmen und ohne Gewähr.</div>
+    </div>
+    <div class="fine">
+      MEILENFLUCHT ✈ · EST. 2026<br>
+      DOC-NO. MF-2026-JNB-001
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Beste Preise aus der Monitor-Historie laden (optional, mit Fallback) */
+(async () => {
+  const QUELLE = "https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/preis_historie.json";
+  try {
+    const r = await fetch(QUELLE);
+    if (!r.ok) return;
+    const hist = await r.json();
+    const beste = Object.entries(hist.beste_preise || {})
+      .map(([k, preis]) => {
+        const [hafen, hin, rueck] = k.split("|");
+        return { hafen, hin, rueck, preis };
+      })
+      .sort((a, b) => a.preis - b.preis)
+      .slice(0, 3);
+    if (!beste.length) return;
+
+    const eur = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(n);
+    const dat = iso => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
+    const tage = (h, r) => Math.round((new Date(r) - new Date(h)) / 864e5);
+
+    document.getElementById("flight-cards").innerHTML = beste.map((f, i) => `
+      <div class="card flight ${i === 0 ? "best" : ""}">
+        ${i === 0 ? '<span class="tag">BESTER DEAL</span>' :
+          (i === 1 ? '<span class="tag saver">STATUS RETTER</span>' : "")}
+        <div class="route-s">${f.hafen} <em>✈</em> JNB</div>
+        <div class="meta">Lufthansa First<br>${dat(f.hin)} – ${dat(f.rueck)} · ${tage(f.hin, f.rueck)} Tage</div>
+        <div class="price-row">
+          <span class="price">${eur(f.preis)} € <small>p. P.</small></span>
+          <span class="points">+ STATUS</span>
+        </div>
+      </div>`).join("");
+  } catch (e) { /* Fallback-Karten bleiben stehen */ }
+})();
+</script>
+
+</body>
+</html>
