@@ -35,7 +35,7 @@
   "quellen": {
     "_kommentar_airlines": "LX zusätzlich, damit AMS-ZRH-JNB mit SWISS First auftaucht.",
     "airlines": ["LH", "LX"],
-    "max_angebote_pro_abfrage": 5,
+    "max_angebote_pro_abfrage": 8,
     "api_calls_pro_lauf": {
       "_kommentar": "Budgets für ZWEI Läufe pro Tag ausgelegt: SerpAPI 1/Lauf = ~60 der 100 Gratis-Suchen/Monat, Amadeus (falls je aktiv) 30/Lauf. Duffel/Kiwi/Travelpayouts-Suchen sind kostenlos, nur ratenlimitiert.",
       "amadeus": 30,

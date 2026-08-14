@@ -153,8 +153,22 @@ def _abfragen(name, modul, auswahl) -> list[Angebot]:
     return ergebnisse
 
 
-def angebote_holen() -> list[Angebot]:
-    """Alle aktiven Rasterquellen abfragen, dann SerpAPI-Nachprüfung."""
+def _fenster(kombis, cursor: dict, name: str, budget: int):
+    """Nächstes Raster-Fenster ab der gespeicherten Position der Quelle."""
+    start = cursor.get(name, 0) % len(kombis)
+    breite = min(budget, len(kombis))
+    auswahl = [kombis[(start + i) % len(kombis)] for i in range(breite)]
+    cursor[name] = (start + breite) % len(kombis)
+    return start, auswahl
+
+
+def angebote_holen(hist: dict) -> list[Angebot]:
+    """Alle aktiven Rasterquellen abfragen, dann SerpAPI-Nachprüfung.
+
+    Jede Quelle merkt sich ihre Position im Suchraster (Cursor in der
+    Historie) — jeder Lauf scannt also ein neues Fenster, auch von Hand
+    gestartete Zusatzläufe bringen frische Daten.
+    """
     q_cfg = CONFIG["quellen"]
 
     kombis = [
@@ -166,7 +180,7 @@ def angebote_holen() -> list[Angebot]:
         print("Keine zukünftigen Datumspaare mehr im Suchzeitraum.")
         return []
 
-    heute = date.today().toordinal()
+    cursor = hist.setdefault("raster_cursor", {})
     ergebnisse: list[Angebot] = []
 
     for name, modul in QUELLEN.items():
@@ -175,17 +189,16 @@ def angebote_holen() -> list[Angebot]:
             continue
 
         budget = q_cfg["api_calls_pro_lauf"].get(name, 50)
-        zyklus = max(1, -(-len(kombis) // budget))  # ceil
-        auswahl = kombis[heute % zyklus::zyklus]
-        print(f"Quelle {name}: {len(auswahl)} von {len(kombis)} Kombinationen "
-              f"heute an der Reihe (voller Durchlauf alle {zyklus} Tage)")
+        start, auswahl = _fenster(kombis, cursor, name, budget)
+        print(f"Quelle {name}: Fenster ab Position {start}, "
+              f"{len(auswahl)} von {len(kombis)} Kombinationen")
         ergebnisse += _abfragen(name, modul, auswahl)
 
-    ergebnisse += _nachpruefung_serpapi(kombis, ergebnisse)
+    ergebnisse += _nachpruefung_serpapi(kombis, cursor, ergebnisse)
     return ergebnisse
 
 
-def _nachpruefung_serpapi(kombis, bisher) -> list[Angebot]:
+def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
     """Die günstigsten Treffer der anderen Quellen bei Google Flights prüfen."""
     if not serpapi_quelle.verfuegbar():
         print("Quelle serpapi: Zugangsdaten nicht gesetzt — übersprungen.")
@@ -206,9 +219,8 @@ def _nachpruefung_serpapi(kombis, bisher) -> list[Angebot]:
             break
 
     if not kandidaten:
-        # nichts nachzuprüfen — Budget in das rotierende Raster stecken
-        zyklus = max(1, -(-len(kombis) // budget))
-        kandidaten = kombis[date.today().toordinal() % zyklus::zyklus]
+        # nichts nachzuprüfen — Budget in das Raster stecken
+        _, kandidaten = _fenster(kombis, cursor, "serpapi", budget)
         print(f"Quelle serpapi: keine Kandidaten, stattdessen "
               f"{len(kandidaten)} Raster-Abfragen.")
     else:
@@ -385,7 +397,7 @@ def _betreff(a: Angebot, sofort: float) -> str:
 def main() -> None:
     hist = historie_laden()
 
-    alle = angebote_holen()
+    alle = angebote_holen(hist)
     print(f"{len(alle)} Angebote geprüft")
     webseite_daten_schreiben(alle)
 
