@@ -1,0 +1,22 @@
+{
+  "erzeugt_am": "2026-08-14T18:48:32",
+  "angebote": [
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-03",
+      "rueckflug_datum": "2026-12-10",
+      "preis_pro_person": 7478.71,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH0999 AMS-FRA, LH0572 FRA-JNB",
+      "fluege_rueck": "LH0573 JNB-FRA, LH0994 FRA-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "via": "FRA",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 14957.42,
+      "stand": "2026-08-14"
+    }
+  ]
+}
