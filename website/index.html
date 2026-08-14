@@ -232,6 +232,51 @@ section { padding: 40px 0; }
 .flights-note { margin-top: 18px; font-size: 13px; color: var(--text-2); }
 .flights-note b { color: var(--text); }
 
+/* ============ Hotels / Lounge / Restaurant ============ */
+.stays { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--gap); }
+.stay { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.stay .foto {
+  height: 170px; position: relative;
+  display: flex; align-items: flex-end; padding: 16px 22px;
+}
+.stay .foto.dest {
+  background:
+    linear-gradient(180deg, rgba(7, 17, 28, 0.1), rgba(7, 17, 28, 0.85)),
+    linear-gradient(135deg, #1d3a5f 0%, #0d1926 55%, #3d2f14 100%);
+}
+.stay .foto.hotel {
+  background:
+    linear-gradient(180deg, rgba(7, 17, 28, 0.1), rgba(7, 17, 28, 0.85)),
+    linear-gradient(135deg, #3a2c14 0%, #0d1926 60%, #1d3a5f 100%);
+}
+.stay .foto.lounge {
+  background:
+    linear-gradient(180deg, rgba(7, 17, 28, 0.1), rgba(7, 17, 28, 0.85)),
+    linear-gradient(135deg, #2c1d3f 0%, #0d1926 60%, #14303a 100%);
+}
+.stay .foto .ort {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; color: var(--cream); text-transform: uppercase;
+}
+.stay .foto .tag-chip {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; color: var(--ink);
+  background: var(--cream); border-radius: 3px 8px 8px 3px;
+  padding: 4px 10px 4px 14px;
+}
+.stay .foto .tag-chip::before {
+  content: "○"; margin-right: 6px; font-size: 8px; vertical-align: 1px;
+}
+.stay .stay-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.stay h3 { font-family: var(--font-serif); font-weight: 600; font-size: 20px; }
+.stay p { color: var(--text-2); font-size: 13.5px; }
+.stay .stay-fuss {
+  margin-top: auto; padding-top: 12px; border-top: 1px solid var(--card-edge);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--gold); text-transform: uppercase;
+}
+
 /* ============ Kosten / Schwellen ============ */
 .thresholds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); }
 .threshold .num { font-family: var(--font-mono); font-weight: 600; font-size: 34px; }
@@ -278,6 +323,7 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
       <a class="active" href="#dashboard">Dashboard</a>
       <a href="#trip">Trips</a>
       <a href="#fluege">Flüge</a>
+      <a href="#hotels">Hotels</a>
       <a href="#status">Status</a>
       <a href="#kosten">Kosten</a>
     </nav>
@@ -396,6 +442,52 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
         Preise füllt der Monitor: Sobald <b>preis_historie.json</b> im Repo liegt, zeigt diese
         Seite die besten bekannten Preise pro Reisefenster. Bis dahin: Geduld — der Automat arbeitet.
       </p>
+    </div>
+  </section>
+
+  <!-- Hotels / Lounge / Restaurant -->
+  <section id="hotels">
+    <div class="wrap">
+      <div class="eyebrow">Hotels · Essen. Trinken.</div>
+      <div class="stays">
+        <div class="card stay">
+          <div class="foto dest">
+            <span class="tag-chip">JNB · GATE A12</span>
+            <span class="ort">Johannesburg · Dezember</span>
+          </div>
+          <div class="stay-body">
+            <h3>Die Destination</h3>
+            <p>Sommer im Dezember, 25 Grad, Jacaranda-Schatten. Während zu Hause
+               die Heizung läuft, läuft hier der Grill.</p>
+            <div class="stay-fuss">Ziel bestätigt · 2 PAX</div>
+          </div>
+        </div>
+        <div class="card stay">
+          <div class="foto hotel">
+            <span class="tag-chip">CHECK-IN 15:00</span>
+            <span class="ort">Unterkunft · noch offen</span>
+          </div>
+          <div class="stay-body">
+            <h3>Das Hotel</h3>
+            <p>Wird gebucht, sobald die Flüge stehen. Anforderungsprofil:
+               Pool, Terrasse, gutes Frühstück — in dieser Reihenfolge verhandelbar,
+               aber nur knapp.</p>
+            <div class="stay-fuss">Auswahl folgt nach Flugbuchung</div>
+          </div>
+        </div>
+        <div class="card stay">
+          <div class="foto lounge">
+            <span class="tag-chip">SEN · FAST LANE</span>
+            <span class="ort">Lounge &amp; Restaurant</span>
+          </div>
+          <div class="stay-body">
+            <h3>Lounge &amp; Tafel</h3>
+            <p>First-Class-Terminal in Frankfurt, Champagner vor dem Abflug,
+               Kapstadt-Wein nach der Landung. Der Statuspunkt isst bekanntlich mit.</p>
+            <div class="stay-fuss">Essen. Trinken. Status retten.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
