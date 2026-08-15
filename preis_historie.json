@@ -2,5 +2,9 @@
   "beste_preise": {
     "AMS|2026-12-03|2026-12-10": 7478.71
   },
-  "letzter_lauf": "2026-08-14T18:57:29"
+  "letzter_lauf": "2026-08-15T06:41:53",
+  "raster_cursor": {
+    "duffel": 120,
+    "serpapi": 1
+  }
 }
