@@ -106,12 +106,18 @@ def datumspaare():
         tag += timedelta(days=1)
 
 
-def _abfragen(name, modul, auswahl) -> list[Angebot]:
-    """Eine Quelle über eine Liste von (hafen, hin, rueck) laufen lassen."""
+def _abfragen(name, modul, auswahl) -> tuple[list[Angebot], int]:
+    """Eine Quelle über eine Liste von (hafen, hin, rueck) laufen lassen.
+
+    Liefert (Angebote, Anzahl tatsächlich abgearbeiteter Kombinationen),
+    damit der Raster-Cursor bei vorzeitigem Abbruch nicht Bereiche
+    überspringt.
+    """
     reise = CONFIG["reise"]
     q_cfg = CONFIG["quellen"]
     ergebnisse: list[Angebot] = []
 
+    abgearbeitet = 0
     fehler_in_folge = 0
     for hafen, hin, rueck in auswahl:
         try:
@@ -123,11 +129,14 @@ def _abfragen(name, modul, auswahl) -> list[Angebot]:
                 max_angebote=q_cfg["max_angebote_pro_abfrage"],
             )
             fehler_in_folge = 0
+            abgearbeitet += 1
         except modul.KontingentErschoepft:
-            print(f"Quelle {name}: Kontingent erschöpft — "
-                  "Rest entfällt für heute.", file=sys.stderr)
+            print(f"Quelle {name}: Kontingent erschöpft nach {abgearbeitet} "
+                  "Abfragen — Rest wird beim nächsten Lauf nachgeholt.",
+                  file=sys.stderr)
             break
         except modul.SucheFehler as e:
+            abgearbeitet += 1
             fehler_in_folge += 1
             print(f"Quelle {name}: Abfrage übersprungen: {e}", file=sys.stderr)
             if fehler_in_folge >= 5:
@@ -150,16 +159,13 @@ def _abfragen(name, modul, auswahl) -> list[Angebot]:
                 buchungslink=t.get("link", ""),
                 quelle=name,
             ))
-    return ergebnisse
+    return ergebnisse, abgearbeitet
 
 
-def _fenster(kombis, cursor: dict, name: str, budget: int):
-    """Nächstes Raster-Fenster ab der gespeicherten Position der Quelle."""
-    start = cursor.get(name, 0) % len(kombis)
+def _fenster(kombis, start: int, budget: int):
+    """Raster-Fenster ab Position start (ohne den Cursor zu bewegen)."""
     breite = min(budget, len(kombis))
-    auswahl = [kombis[(start + i) % len(kombis)] for i in range(breite)]
-    cursor[name] = (start + breite) % len(kombis)
-    return start, auswahl
+    return [kombis[(start + i) % len(kombis)] for i in range(breite)]
 
 
 def angebote_holen(hist: dict) -> list[Angebot]:
@@ -189,10 +195,13 @@ def angebote_holen(hist: dict) -> list[Angebot]:
             continue
 
         budget = q_cfg["api_calls_pro_lauf"].get(name, 50)
-        start, auswahl = _fenster(kombis, cursor, name, budget)
+        start = cursor.get(name, 0) % len(kombis)
+        auswahl = _fenster(kombis, start, budget)
         print(f"Quelle {name}: Fenster ab Position {start}, "
               f"{len(auswahl)} von {len(kombis)} Kombinationen")
-        ergebnisse += _abfragen(name, modul, auswahl)
+        treffer, abgearbeitet = _abfragen(name, modul, auswahl)
+        cursor[name] = (start + abgearbeitet) % len(kombis)
+        ergebnisse += treffer
 
     ergebnisse += _nachpruefung_serpapi(kombis, cursor, ergebnisse)
     return ergebnisse
@@ -220,13 +229,17 @@ def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
 
     if not kandidaten:
         # nichts nachzuprüfen — Budget in das Raster stecken
-        _, kandidaten = _fenster(kombis, cursor, "serpapi", budget)
+        start = cursor.get("serpapi", 0) % len(kombis)
+        kandidaten = _fenster(kombis, start, budget)
         print(f"Quelle serpapi: keine Kandidaten, stattdessen "
               f"{len(kandidaten)} Raster-Abfragen.")
-    else:
-        print(f"Quelle serpapi: prüft {len(kandidaten)} Top-Treffer nach.")
+        treffer, abgearbeitet = _abfragen("serpapi", serpapi_quelle, kandidaten)
+        cursor["serpapi"] = (start + abgearbeitet) % len(kombis)
+        return treffer
 
-    return _abfragen("serpapi", serpapi_quelle, kandidaten)
+    print(f"Quelle serpapi: prüft {len(kandidaten)} Top-Treffer nach.")
+    treffer, _ = _abfragen("serpapi", serpapi_quelle, kandidaten)
+    return treffer
 
 
 # --------------------------------------------------------------------------

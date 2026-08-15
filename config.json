@@ -39,7 +39,7 @@
     "api_calls_pro_lauf": {
       "_kommentar": "Budgets für ZWEI Läufe pro Tag ausgelegt: SerpAPI 1/Lauf = ~60 der 100 Gratis-Suchen/Monat, Amadeus (falls je aktiv) 30/Lauf. Duffel/Kiwi/Travelpayouts-Suchen sind kostenlos, nur ratenlimitiert.",
       "amadeus": 30,
-      "duffel": 120,
+      "duffel": 60,
       "kiwi": 120,
       "travelpayouts": 120,
       "serpapi": 1

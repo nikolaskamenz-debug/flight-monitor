@@ -43,7 +43,7 @@ def verfuegbar() -> bool:
 
 
 _letzte_anfrage = 0.0
-_MIN_ABSTAND_S = 1.2      # Duffel drosselt Dauerfeuer; sanft takten
+_MIN_ABSTAND_S = 2.0      # Duffel drosselt Dauerfeuer; sanft takten
 
 
 def _takten() -> None:
