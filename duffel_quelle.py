@@ -73,17 +73,20 @@ def suche_fluege(abflug, ziel, hin, rueck, *, kabine="FIRST", passagiere=2,
         "Authorization": f"Bearer {os.environ['DUFFEL_API_KEY']}",
         "Duffel-Version": "v2",
     }
-    _takten()
-    r = requests.post(_URL, params={"return_offers": "true"},
-                      json=rumpf, headers=kopf, timeout=60)
-    if r.status_code == 429:
-        # einmal abwarten und wiederholen, erst danach aufgeben
-        pause = min(float(r.headers.get("Retry-After") or 10), 30)
-        logger.warning("Duffel drosselt — warte %.0f s und wiederhole", pause)
-        time.sleep(pause)
+    # Duffel drosselt Such-lastige Konten (Look-to-book-Schutz).
+    # Statt aufzugeben: gestaffelt warten und weitermachen.
+    r = None
+    for versuch in range(1, 6):
         _takten()
         r = requests.post(_URL, params={"return_offers": "true"},
                           json=rumpf, headers=kopf, timeout=60)
+        if r.status_code != 429:
+            break
+        pause = float(r.headers.get("Retry-After") or 0) or 15.0 * versuch
+        pause = min(pause, 120)
+        logger.warning("Duffel drosselt — warte %.0f s (Versuch %d/5)",
+                       pause, versuch)
+        time.sleep(pause)
     if r.status_code == 429:
         raise KontingentErschoepft(r.text[:300])
     if r.status_code not in (200, 201):
