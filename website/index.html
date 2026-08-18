@@ -218,7 +218,7 @@ section { padding: 40px 0; }
 }
 .flight .tag.saver { background: var(--silver); }
 .flight .route-s {
-  font-family: var(--font-mono); font-weight: 600; font-size: 26px; letter-spacing: 0.04em;
+  font-family: var(--font-mono); font-weight: 600; font-size: 21px; letter-spacing: 0.03em;
 }
 .flight .route-s em { font-style: normal; color: var(--gold); font-size: 0.6em; vertical-align: middle; padding: 0 4px; }
 .flight .meta { color: var(--text-2); font-size: 13.5px; line-height: 1.7; }
@@ -458,28 +458,28 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
       <div class="flights" id="flight-cards">
         <!-- Feste Strecken-Slots; das Skript füllt gefundene Preise ein -->
         <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> JNB</div>
-          <div class="meta">First Class · via FRA<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="route-s">AMS <em>✈</em> FRA <em>✈</em> JNB</div>
+          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
           <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
         <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> JNB</div>
-          <div class="meta">First Class · via MUC<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="route-s">AMS <em>✈</em> MUC <em>✈</em> JNB</div>
+          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
           <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
         <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> JNB</div>
-          <div class="meta">First Class · via ZRH<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="route-s">AMS <em>✈</em> ZRH <em>✈</em> JNB</div>
+          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
           <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
         <div class="card flight leer">
-          <div class="route-s">FMO <em>✈</em> JNB</div>
-          <div class="meta">First Class · via FRA<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="route-s">FMO <em>✈</em> FRA <em>✈</em> JNB</div>
+          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
           <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
         <div class="card flight leer">
-          <div class="route-s">FMO <em>✈</em> JNB</div>
-          <div class="meta">First Class · via MUC<br><em>Noch kein Schnäppchen gefunden</em></div>
+          <div class="route-s">FMO <em>✈</em> MUC <em>✈</em> JNB</div>
+          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
           <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
         </div>
       </div>
@@ -657,21 +657,24 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
     const eur = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(n);
     const dat = iso => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
     const tage = (h, r2) => Math.round((new Date(r2) - new Date(h)) / 864e5);
-    const route = via => via === "Direkt" ? "Direktflug" : `via ${via} · 1 Umstieg`;
+    const kette = (hafen, via) => via === "Direkt"
+      ? `${hafen} <em>✈</em> JNB`
+      : `${hafen} <em>✈</em> ${via} <em>✈</em> JNB`;
+    const umstieg = via => via === "Direkt" ? "Direktflug" : "1 Umstieg";
 
     document.getElementById("flight-cards").innerHTML = karten.map(k => {
       const f = k.fund;
       if (!f) return `
       <div class="card flight leer">
-        <div class="route-s">${k.hafen} <em>✈</em> JNB</div>
-        <div class="meta">First Class · ${route(k.via)}<br><em>Noch kein Schnäppchen gefunden</em></div>
+        <div class="route-s">${kette(k.hafen, k.via)}</div>
+        <div class="meta">First Class · ${umstieg(k.via)}<br><em>Noch kein Schnäppchen gefunden</em></div>
         <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
       </div>`;
       return `
       <div class="card flight ${badge.has(k) && badge.get(k).includes("BESTER") ? "best" : ""}">
         ${badge.get(k) || ""}
-        <div class="route-s">${k.hafen} <em>✈</em> JNB</div>
-        <div class="meta">First Class · ${route(k.via)}<br>
+        <div class="route-s">${kette(k.hafen, k.via)}</div>
+        <div class="meta">First Class · ${umstieg(k.via)}<br>
           ${dat(f.hinflug_datum)} – ${dat(f.rueckflug_datum)} · ${tage(f.hinflug_datum, f.rueckflug_datum)} Tage · ${f.quelle}</div>
         <div class="price-row">
           <span class="price">${eur(f.preis_pro_person)} € <small>p. P.</small></span>
