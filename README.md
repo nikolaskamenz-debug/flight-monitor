@@ -22,10 +22,7 @@ GitHub Actions (06/12/18 UTC = 8/14/20 Uhr Sommerzeit)
        └─ POST an n8n-Webhook  ->  n8n formatiert & verschickt die Mail
 ```
 
-Der Suchraum (2 Flughäfen × Dezember-Abflüge × 5–10 Tage Aufenthalt ≈ 370
-Kombinationen) wird pro Quelle in einem rotierenden Raster abgefragt, damit die
-API-Kontingente reichen. Mit dem Standard-Budget von 65 Amadeus-Calls pro Lauf
-ist der volle Suchraum alle ~6 Tage einmal komplett abgedeckt.
+Der Suchraum (2 Kabinen × 2 Ziele × 5 Abflughäfen × Dezember-Datumspaare ≈ 3.700 Kombinationen) wird pro Quelle mit einem Fenster-Cursor abgearbeitet: Jeder Lauf scannt das nächste Stück, nichts wird übersprungen. Mit drei Läufen täglich und 120 Duffel-Abfragen pro Lauf ist alles etwa alle 10 Tage einmal komplett abgedeckt.
 
 ## Quellen
 
