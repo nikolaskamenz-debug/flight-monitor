@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MEILENFLUCHT ✈ — Essen. Trinken. Status retten.</title>
-<meta name="description" content="MEILENFLUCHT — das private First-Class-Portal. Mission Dezember: Johannesburg.">
+<meta name="description" content="MEILENFLUCHT — das private First-Class-Portal. Mission Dezember: Johannesburg & Kapstadt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -230,6 +230,22 @@ section { padding: 40px 0; }
 .flight.leer .price { color: var(--text-2); font-weight: 500; }
 .flight.leer .route-s { opacity: 0.55; }
 .flight.leer .meta em { font-style: normal; color: var(--text-2); }
+.flight .tag.saver { left: auto; right: 22px; }
+.kabinen { margin-top: 6px; display: flex; flex-direction: column; }
+.kab-zeile {
+  display: grid; grid-template-columns: 78px 1fr auto; gap: 10px;
+  align-items: baseline; padding: 10px 0;
+  border-top: 1px solid var(--card-edge);
+}
+.kab-name {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; color: var(--gold);
+}
+.kab-name.biz { color: var(--silver); }
+.kab-info { font-size: 11.5px; color: var(--text-2); }
+.kab-info em { font-style: normal; }
+.kab-preis { font-family: var(--font-mono); font-weight: 600; font-size: 17px; }
+.kab-preis.offen { color: var(--text-2); font-weight: 500; }
 .flight .price small { font-size: 12px; color: var(--text-2); font-weight: 500; }
 .flight .points { font-family: var(--font-mono); font-size: 12px; color: var(--gold); font-weight: 600; }
 .flights-note { margin-top: 18px; font-size: 13px; color: var(--text-2); }
@@ -388,9 +404,9 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
       <div class="hero-left">
         <h1>Die letzten Meilen.<br>Die besten Momente.</h1>
         <p class="sub">
-          <strong>Mission Dezember:</strong> Zwei Sitze in der First nach Johannesburg,
-          fünf bis zehn Tage Sommer im Dezember. Der Monitor wacht zweimal täglich,
-          morgens um 8 und abends um 20 Uhr — gemeldet wird nur, was sich wirklich lohnt.
+          <strong>Mission Dezember:</strong> Zwei Sitze vorne nach Johannesburg oder Kapstadt — First,
+          oder Business, wenn sie frech günstig wird. Fünf bis zehn Tage Sommer im Dezember. Der Monitor wacht dreimal täglich —
+          um 8, 14 und 20 Uhr — gemeldet wird nur, was sich wirklich lohnt.
         </p>
         <span class="stamp">MISSION DEZEMBER · APPROVED</span>
       </div>
@@ -454,40 +470,87 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
   <!-- Flugvergleich -->
   <section id="fluege">
     <div class="wrap">
-      <div class="eyebrow">Flugvergleich · Beste bekannte Preise</div>
-      <div class="flights" id="flight-cards">
-        <!-- Feste Strecken-Slots; das Skript füllt gefundene Preise ein -->
-        <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> FRA <em>✈</em> JNB</div>
-          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
-          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+      <div class="eyebrow">Flugvergleich · Johannesburg</div>
+      <div class="flights" id="cards-jnb">
+        <div class="card flight leer" data-hafen="AMS" data-ziel="JNB">
+          <div class="route-s">AMS <em>✈</em> JNB</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
         </div>
-        <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> MUC <em>✈</em> JNB</div>
-          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
-          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        <div class="card flight leer" data-hafen="FMO" data-ziel="JNB">
+          <div class="route-s">FMO <em>✈</em> JNB</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
         </div>
-        <div class="card flight leer">
-          <div class="route-s">AMS <em>✈</em> ZRH <em>✈</em> JNB</div>
-          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
-          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        <div class="card flight leer" data-hafen="MUC" data-ziel="JNB">
+          <div class="route-s">MUC <em>✈</em> JNB</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
         </div>
-        <div class="card flight leer">
-          <div class="route-s">FMO <em>✈</em> FRA <em>✈</em> JNB</div>
-          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
-          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        <div class="card flight leer" data-hafen="FRA" data-ziel="JNB">
+          <div class="route-s">FRA <em>✈</em> JNB</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
         </div>
-        <div class="card flight leer">
-          <div class="route-s">FMO <em>✈</em> MUC <em>✈</em> JNB</div>
-          <div class="meta">First Class · 1 Umstieg<br><em>Noch kein Schnäppchen gefunden</em></div>
-          <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+        <div class="card flight leer" data-hafen="ZRH" data-ziel="JNB">
+          <div class="route-s">ZRH <em>✈</em> JNB</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="eyebrow" style="margin-top:40px">Flugvergleich · Kapstadt</div>
+      <div class="flights" id="cards-cpt">
+        <div class="card flight leer" data-hafen="AMS" data-ziel="CPT">
+          <div class="route-s">AMS <em>✈</em> CPT</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
+        </div>
+        <div class="card flight leer" data-hafen="FMO" data-ziel="CPT">
+          <div class="route-s">FMO <em>✈</em> CPT</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
+        </div>
+        <div class="card flight leer" data-hafen="MUC" data-ziel="CPT">
+          <div class="route-s">MUC <em>✈</em> CPT</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
+        </div>
+        <div class="card flight leer" data-hafen="FRA" data-ziel="CPT">
+          <div class="route-s">FRA <em>✈</em> CPT</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
+        </div>
+        <div class="card flight leer" data-hafen="ZRH" data-ziel="CPT">
+          <div class="route-s">ZRH <em>✈</em> CPT</div>
+          <div class="kabinen">
+            <div class="kab-zeile"><span class="kab-name">FIRST</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+            <div class="kab-zeile"><span class="kab-name biz">BUSINESS</span><span class="kab-info"><em>noch kein Schnäppchen</em></span><span class="kab-preis offen">— €</span></div>
+          </div>
         </div>
       </div>
       <p class="flights-note">
-        Der Monitor füllt diesen Vergleich Lauf für Lauf: <b>je Strecke</b> (AMS/FMO,
-        via FRA, MUC oder ZRH) das günstigste bekannte First-Angebot. Zweimal täglich —
-        um 8 und um 20 Uhr — wird das nächste Stück des Dezembers gescannt; der
-        Vergleich wird also von Lauf zu Lauf vollständiger.
+        Je Abflughafen und Ziel das günstigste bekannte Angebot — First und Business
+        getrennt, mit Umsteigeort in der Zeile. Der Monitor scannt dreimal täglich
+        das nächste Stück des Dezembers; der Vergleich wird von Lauf zu Lauf
+        vollständiger. Gold-Badge: bester First-Preis, Silber: beste Business.
       </p>
     </div>
   </section>
@@ -574,16 +637,16 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
       <div class="eyebrow">Kosten · Die Spielregeln</div>
       <div class="thresholds">
         <div class="card threshold watch">
-          <div class="num">8:00 <small>&amp;</small> 20:00</div>
-          <p>Der Monitor scannt zweimal täglich alle Quellen. Keine Treffer, keine Mail — Ruhe ist auch eine Information.</p>
+          <div class="num">8 · 14 · 20 <small>Uhr</small></div>
+          <p>Der Monitor scannt dreimal täglich alle Quellen. Keine Treffer, keine Mail — Ruhe ist auch eine Information.</p>
         </div>
         <div class="card threshold alarm">
-          <div class="num">6.000 € <small>p. P.</small></div>
-          <p>Preisalarm. Ab hier wird gemeldet — aber nur, wenn es mindestens 200 € besser ist als alles bisher Gesehene.</p>
+          <div class="num">6.000 € <small>First</small></div>
+          <p>Preisalarm — Business meldet ab 3.500 €. Gemeldet wird nur, was mindestens 200 € besser ist als alles bisher Gesehene.</p>
         </div>
         <div class="card threshold book">
-          <div class="num">5.000 € <small>p. P.</small></div>
-          <p>Sofort prüfen. Solche Preise sind meist innerhalb weniger Stunden weg. Erst buchen, dann freuen.</p>
+          <div class="num">5.000 € <small>First</small></div>
+          <p>Sofort prüfen — bei Business ab 2.800 €. Solche Preise sind meist innerhalb weniger Stunden weg.</p>
         </div>
       </div>
 
@@ -625,64 +688,52 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
 </footer>
 
 <script>
-/* Flugvergleich: feste Strecken-Slots, gefüllt aus top_angebote.json.
-   Slots ohne Fund zeigen "— € / Noch kein Schnäppchen gefunden". */
+/* Flugvergleich: je (Abflughafen, Ziel) bestes Angebot pro Kabine
+   aus top_angebote.json; leere Zeilen zeigen "— €". */
 (async () => {
-  const SLOTS = [
-    { hafen: "AMS", via: "FRA" },
-    { hafen: "AMS", via: "MUC" },
-    { hafen: "AMS", via: "ZRH" },
-    { hafen: "FMO", via: "FRA" },
-    { hafen: "FMO", via: "MUC" },
-  ];
+  const HAEFEN = ["AMS", "FMO", "MUC", "FRA", "ZRH"];
+  const ZIELE = ["JNB", "CPT"];
   try {
     const r = await fetch("https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/top_angebote.json");
     const top = r.ok ? await r.json() : { angebote: [] };
-    const daten = new Map();
-    (top.angebote || []).forEach(a => daten.set(a.abflughafen + "|" + a.via, a));
-
-    // gefundene Strecken außerhalb der festen Slots hinten anhängen (z.B. Direktflug)
-    const extras = (top.angebote || []).filter(
-      a => !SLOTS.some(s => s.hafen === a.abflughafen && s.via === a.via));
-    const karten = SLOTS.map(s => ({ ...s, fund: daten.get(s.hafen + "|" + s.via) }))
-      .concat(extras.map(a => ({ hafen: a.abflughafen, via: a.via, fund: a })));
-
-    // Badges für die zwei günstigsten gefundenen Strecken
-    const gefunden = karten.filter(k => k.fund)
-      .sort((a, b) => a.fund.preis_pro_person - b.fund.preis_pro_person);
-    const badge = new Map();
-    if (gefunden[0]) badge.set(gefunden[0], '<span class="tag">BESTER DEAL</span>');
-    if (gefunden[1]) badge.set(gefunden[1], '<span class="tag saver">STATUS RETTER</span>');
+    const alle = (top.angebote || []).map(a => ({
+      ...a, ziel: a.ziel || "JNB", kabine: a.kabine_gesucht || "FIRST",
+    }));
 
     const eur = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(n);
     const dat = iso => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
-    const tage = (h, r2) => Math.round((new Date(r2) - new Date(h)) / 864e5);
-    const kette = (hafen, via) => via === "Direkt"
-      ? `${hafen} <em>✈</em> JNB`
-      : `${hafen} <em>✈</em> ${via} <em>✈</em> JNB`;
-    const umstieg = via => via === "Direkt" ? "Direktflug" : "1 Umstieg";
 
-    document.getElementById("flight-cards").innerHTML = karten.map(k => {
-      const f = k.fund;
-      if (!f) return `
-      <div class="card flight leer">
-        <div class="route-s">${kette(k.hafen, k.via)}</div>
-        <div class="meta">First Class · ${umstieg(k.via)}<br><em>Noch kein Schnäppchen gefunden</em></div>
-        <div class="price-row"><span class="price">— € <small>p. P.</small></span><span class="points">+ STATUS</span></div>
+    const beste = (hafen, ziel, kabine) => alle
+      .filter(a => a.abflughafen === hafen && a.ziel === ziel && a.kabine === kabine)
+      .sort((x, y) => x.preis_pro_person - y.preis_pro_person)[0] || null;
+
+    for (const ziel of ZIELE) {
+      const container = document.getElementById("cards-" + ziel.toLowerCase());
+      if (!container) continue;
+      const besteF = Math.min(...alle.filter(a => a.ziel === ziel && a.kabine === "FIRST").map(a => a.preis_pro_person));
+      const besteB = Math.min(...alle.filter(a => a.ziel === ziel && a.kabine === "BUSINESS").map(a => a.preis_pro_person));
+
+      container.innerHTML = HAEFEN.map(hafen => {
+        const f = beste(hafen, ziel, "FIRST");
+        const b = beste(hafen, ziel, "BUSINESS");
+        const zeile = (a, name, cls) => a ? `
+          <div class="kab-zeile"><span class="kab-name ${cls}">${name}</span>
+            <span class="kab-info">${a.via === "Direkt" ? "Direkt" : "via " + a.via} · ${dat(a.hinflug_datum)}–${dat(a.rueckflug_datum)} · ${a.quelle}</span>
+            <span class="kab-preis">${eur(a.preis_pro_person)} €</span></div>` : `
+          <div class="kab-zeile"><span class="kab-name ${cls}">${name}</span>
+            <span class="kab-info"><em>noch kein Schnäppchen</em></span>
+            <span class="kab-preis offen">— €</span></div>`;
+        const tagF = f && f.preis_pro_person === besteF ? '<span class="tag">BESTER DEAL</span>' : "";
+        const tagB = b && b.preis_pro_person === besteB ? '<span class="tag saver">BUSINESS-TIPP</span>' : "";
+        return `
+      <div class="card flight ${!f && !b ? "leer" : (tagF ? "best" : "")}">
+        ${tagF}${tagB}
+        <div class="route-s">${hafen} <em>✈</em> ${ziel}</div>
+        <div class="kabinen">${zeile(f, "FIRST", "")}${zeile(b, "BUSINESS", "biz")}</div>
       </div>`;
-      return `
-      <div class="card flight ${badge.has(k) && badge.get(k).includes("BESTER") ? "best" : ""}">
-        ${badge.get(k) || ""}
-        <div class="route-s">${kette(k.hafen, k.via)}</div>
-        <div class="meta">First Class · ${umstieg(k.via)}<br>
-          ${dat(f.hinflug_datum)} – ${dat(f.rueckflug_datum)} · ${tage(f.hinflug_datum, f.rueckflug_datum)} Tage · ${f.quelle}</div>
-        <div class="price-row">
-          <span class="price">${eur(f.preis_pro_person)} € <small>p. P.</small></span>
-          <span class="points">+ STATUS</span>
-        </div>
-      </div>`;
-    }).join("");
-  } catch (e) { /* statische Slots bleiben stehen */ }
+      }).join("");
+    }
+  } catch (e) { /* statische Karten bleiben stehen */ }
 })();
 </script>
 

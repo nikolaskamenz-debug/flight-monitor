@@ -106,18 +106,18 @@ def _geplante_fluege(abflug: str, ziel: str, datum: str) -> set | None:
     return fluege
 
 
-def pruefe(angebote, ziel: str) -> dict[str, bool | None]:
+def pruefe(angebote) -> dict[str, bool | None]:
     """
     Je Angebots-Schlüssel: True (Langstrecke steht im Flugplan),
     False (steht nicht drin) oder None (nicht prüfbar).
     """
     ergebnis: dict[str, bool | None] = {}
     for a in angebote:
-        seg = _langstrecke(a.fluege_hin, ziel)
+        seg = _langstrecke(a.fluege_hin, a.ziel)
         if seg is None:
             ergebnis[a.schluessel] = None
             continue
         flugnr, abflug = seg
-        plan = _geplante_fluege(abflug, ziel, a.hinflug_datum)
+        plan = _geplante_fluege(abflug, a.ziel, a.hinflug_datum)
         ergebnis[a.schluessel] = None if plan is None else (flugnr in plan)
     return ergebnis

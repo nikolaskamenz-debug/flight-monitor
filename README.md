@@ -2,19 +2,21 @@
 
 **Essen. Trinken. Status retten.**
 
-Preismonitor (zweimal täglich, 8 und 20 Uhr deutscher Zeit) für Lufthansa-First-Class-Flüge nach Johannesburg (JNB):
-zwei Personen, Hin- und Rückflug im Dezember, 5–10 Tage Aufenthalt, Abflug ab
-**AMS** oder **FMO**. Gemailt wird nur, wenn ein Angebot unter der Schwelle liegt
-und spürbar besser ist als alles bisher Gesehene.
+Preismonitor (dreimal täglich: 8, 14 und 20 Uhr deutscher Zeit) für
+LH-Group-Flüge nach **Johannesburg (JNB) und Kapstadt (CPT)** — **First und
+Business** getrennt: zwei Personen, Hin- und Rückflug im Dezember, 5–10 Tage
+Aufenthalt, Abflug ab **AMS, FMO, MUC, FRA oder ZRH**. Gemailt wird nur, wenn
+ein Angebot unter der Kabinen-Schwelle liegt (First 6.000 €, Business 3.500 €
+p. P.) und spürbar besser ist als alles bisher Gesehene.
 
 ## Wie es funktioniert
 
 ```
-GitHub Actions (06:00 & 18:00 UTC = 8 & 20 Uhr Sommerzeit)
+GitHub Actions (06/12/18 UTC = 8/14/20 Uhr Sommerzeit)
   └─ deal_monitor.py
        ├─ Raster: Amadeus · Duffel · Kiwi · Travelpayouts  (aktiv, wenn Key gesetzt)
        ├─ SerpAPI (Google Flights): prüft den besten Treffer nach
-       ├─ Filter: FIRST auf Langstrecke, max. 1 Umstieg, unter 6.000 € p.P.
+       ├─ Filter: gesuchte Kabine auf der Langstrecke, max. 1 Umstieg, Kabinen-Schwellwert
        ├─ Lufthansa Open API: bestätigt die Langstrecke im offiziellen Flugplan
        ├─ preis_historie.json: nur echte Verbesserungen (≥ 200 €) melden
        └─ POST an n8n-Webhook  ->  n8n formatiert & verschickt die Mail
@@ -48,7 +50,7 @@ ist der volle Suchraum alle ~6 Tage einmal komplett abgedeckt.
    SMTP-Credential anlegen (Gmail-App-Passwort, smtp.gmail.com:465), im Knoten
    "Secret prüfen" das Geheimnis (= `N8N_SHARED_SECRET`) und im Mail-Knoten die
    Empfängeradresse eintragen. Workflow veröffentlichen.
-3. Fertig — der Workflow `monitor.yml` läuft zweimal täglich (06:00 und 18:00 UTC) oder manuell
+3. Fertig — der Workflow `monitor.yml` läuft dreimal täglich (06/12/18 UTC) oder manuell
    über *Run workflow*.
 
 ## Lokal testen

@@ -67,10 +67,13 @@ class Angebot:
     fluege_rueck: str
     buchungslink: str = ""
     quelle: str = ""            # "amadeus" | "duffel" | "kiwi" | ...
+    kabine_gesucht: str = "FIRST"
+    ziel: str = "JNB"
 
     @property
     def schluessel(self) -> str:
-        return f"{self.abflughafen}|{self.hinflug_datum}|{self.rueckflug_datum}"
+        return (f"{self.abflughafen}|{self.ziel}|{self.hinflug_datum}|"
+                f"{self.rueckflug_datum}|{self.kabine_gesucht}")
 
     @property
     def aufenthalt_tage(self) -> int:
@@ -119,11 +122,11 @@ def _abfragen(name, modul, auswahl) -> tuple[list[Angebot], int]:
 
     abgearbeitet = 0
     fehler_in_folge = 0
-    for hafen, hin, rueck in auswahl:
+    for hafen, ziel, hin, rueck, kabine in auswahl:
         try:
             treffer = modul.suche_fluege(
-                hafen, reise["ziel"], hin, rueck,
-                kabine=reise["kabine"],
+                hafen, ziel, hin, rueck,
+                kabine=kabine,
                 passagiere=reise["passagiere"],
                 airlines=q_cfg["airlines"],
                 max_angebote=q_cfg["max_angebote_pro_abfrage"],
@@ -158,6 +161,8 @@ def _abfragen(name, modul, auswahl) -> tuple[list[Angebot], int]:
                 fluege_rueck=t["segmente_rueck"],
                 buchungslink=t.get("link", ""),
                 quelle=name,
+                kabine_gesucht=kabine,
+                ziel=ziel,
             ))
     return ergebnisse, abgearbeitet
 
@@ -178,7 +183,9 @@ def angebote_holen(hist: dict) -> list[Angebot]:
     q_cfg = CONFIG["quellen"]
 
     kombis = [
-        (hafen, hin, rueck)
+        (hafen, ziel, hin, rueck, kabine)
+        for kabine in CONFIG["reise"]["kabinen"]
+        for ziel in CONFIG["reise"]["ziele"]
         for hafen in CONFIG["abflughaefen"]
         for hin, rueck in datumspaare()
     ]
@@ -215,12 +222,16 @@ def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
 
     budget = CONFIG["quellen"]["api_calls_pro_lauf"].get("serpapi", 3)
 
+    kabinen = CONFIG["reise"]["kabinen"]
+    bevorzugt = kabinen[date.today().toordinal() % len(kabinen)]
     kandidaten, gesehen = [], set()
     for a in sorted((x for x in bisher if passt(x)),
-                    key=lambda x: x.preis_pro_person):
-        k = (a.abflughafen,
+                    key=lambda x: (x.kabine_gesucht != bevorzugt,
+                                   x.preis_pro_person)):
+        k = (a.abflughafen, a.ziel,
              date.fromisoformat(a.hinflug_datum),
-             date.fromisoformat(a.rueckflug_datum))
+             date.fromisoformat(a.rueckflug_datum),
+             a.kabine_gesucht)
         if k not in gesehen:
             gesehen.add(k)
             kandidaten.append(k)
@@ -248,13 +259,14 @@ def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
 
 def passt(a: Angebot) -> bool:
     f = CONFIG["filter"]
-    if f["first_auf_langstrecke_pflicht"] and a.kabine_langstrecke != "FIRST":
+    if (f["kabine_auf_langstrecke_pflicht"]
+            and a.kabine_langstrecke != a.kabine_gesucht):
         return False
     if a.umsteige_hin > f["max_umsteige_hinflug"]:
         return False
     if a.umsteige_rueck > f["max_umsteige_rueckflug"]:
         return False
-    if a.preis_pro_person > CONFIG["schwellwerte"]["alarm_ab"]:
+    if a.preis_pro_person > CONFIG["schwellwerte"][a.kabine_gesucht]["alarm_ab"]:
         return False
     return True
 
@@ -269,7 +281,8 @@ WEB_DATEI = "top_angebote.json"
 def _qualitaet(a: Angebot) -> bool:
     """Wie passt(), aber ohne Preisschwelle — für den Marktüberblick."""
     f = CONFIG["filter"]
-    if f["first_auf_langstrecke_pflicht"] and a.kabine_langstrecke != "FIRST":
+    if (f["kabine_auf_langstrecke_pflicht"]
+            and a.kabine_langstrecke != a.kabine_gesucht):
         return False
     return (a.umsteige_hin <= f["max_umsteige_hinflug"]
             and a.umsteige_rueck <= f["max_umsteige_rueckflug"])
@@ -279,7 +292,7 @@ def _via(a: Angebot) -> str:
     """Umsteigeort aus dem ersten Hinflug-Segment ziehen."""
     erster = a.fluege_hin.split(",")[0]
     m = re.search(r"([A-Z]{3})-([A-Z]{3})", erster)
-    if not m or m.group(2) == CONFIG["reise"]["ziel"]:
+    if not m or m.group(2) == a.ziel:
         return "Direkt"
     return m.group(2)
 
@@ -290,7 +303,8 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
     bestand: dict = {}
     if p.exists():
         for e in json.loads(p.read_text(encoding="utf-8")).get("angebote", []):
-            bestand[(e["abflughafen"], e["via"])] = e
+            bestand[(e["abflughafen"], e.get("ziel", "JNB"), e["via"],
+                     e.get("kabine_gesucht", "FIRST"))] = e
 
     heute = date.today()
     for a in alle:
@@ -303,7 +317,7 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
             "preis_gesamt": a.preis_gesamt,
             "stand": heute.isoformat(),
         }
-        k = (e["abflughafen"], e["via"])
+        k = (e["abflughafen"], e["ziel"], e["via"], e["kabine_gesucht"])
         alt = bestand.get(k)
         if alt is None or e["preis_pro_person"] < alt["preis_pro_person"]:
             bestand[k] = e
@@ -316,7 +330,7 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
     frisch.sort(key=lambda e: e["preis_pro_person"])
     p.write_text(json.dumps(
         {"erzeugt_am": datetime.now().isoformat(timespec="seconds"),
-         "angebote": frisch[:12]},
+         "angebote": frisch[:60]},
         indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Website-Daten: {len(frisch[:12])} Strecken in {WEB_DATEI}")
 
@@ -363,7 +377,8 @@ def an_n8n(treffer: list[Angebot], flugplan: dict[str, bool | None]) -> None:
         print("FEHLER: N8N_WEBHOOK_URL nicht gesetzt.", file=sys.stderr)
         sys.exit(1)
 
-    sofort = CONFIG["schwellwerte"]["sofort_buchen"]
+    kabine = treffer[0].kabine_gesucht
+    sofort = CONFIG["schwellwerte"][kabine]["sofort_buchen"]
     bester = min(treffer, key=lambda a: a.preis_pro_person)
 
     nutzlast = {
@@ -400,7 +415,8 @@ def an_n8n(treffer: list[Angebot], flugplan: dict[str, bool | None]) -> None:
 
 def _betreff(a: Angebot, sofort: float) -> str:
     marke = "SOFORT PRUEFEN" if a.preis_pro_person <= sofort else "Preisalarm"
-    return (f"MEILENFLUCHT ✈️ {marke}: JNB First ab {a.abflughafen} — "
+    kab = "First" if a.kabine_gesucht == "FIRST" else "Business"
+    return (f"MEILENFLUCHT ✈️ {marke}: {a.ziel} {kab} ab {a.abflughafen} — "
             f"{a.preis_pro_person:.0f} EUR p.P. "
             f"({a.hinflug_datum} bis {a.rueckflug_datum})")
 
@@ -415,8 +431,10 @@ def main() -> None:
     webseite_daten_schreiben(alle)
 
     passende = [a for a in alle if passt(a)]
-    print(f"{len(passende)} unter Schwellwert "
-          f"{CONFIG['schwellwerte']['alarm_ab']} EUR")
+    schwellen = ", ".join(f"{k} {v['alarm_ab']}"
+                          for k, v in CONFIG["schwellwerte"].items()
+                          if isinstance(v, dict))
+    print(f"{len(passende)} unter Schwellwert ({schwellen} EUR)")
 
     neu = [a for a in passende if ist_meldenswert(a, hist)]
 
@@ -429,13 +447,15 @@ def main() -> None:
     if neu:
         flugplan: dict[str, bool | None] = {}
         if lufthansa_check.verfuegbar():
-            flugplan = lufthansa_check.pruefe(neu, CONFIG["reise"]["ziel"])
+            flugplan = lufthansa_check.pruefe(neu)
             bestaetigt = sum(1 for v in flugplan.values() if v)
             print(f"LH-Flugplan-Check: {bestaetigt}/{len(neu)} bestätigt")
         else:
             print("LH-Flugplan-Check: Zugangsdaten nicht gesetzt — "
                   "übersprungen.")
-        an_n8n(neu, flugplan)
+        for kab, zl in sorted({(a.kabine_gesucht, a.ziel) for a in neu}):
+            an_n8n([a for a in neu
+                    if a.kabine_gesucht == kab and a.ziel == zl], flugplan)
     else:
         print("Nichts Neues — keine Mail.")
 

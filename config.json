@@ -1,13 +1,23 @@
 {
   "reise": {
-    "beschreibung": "MEILENFLUCHT — Johannesburg Dezember, First Class, mit Thankmar",
+    "beschreibung": "MEILENFLUCHT — Südafrika im Dezember (JNB & CPT), mit Thankmar",
     "passagiere": 2,
-    "kabine": "FIRST",
-    "ziel": "JNB"
+    "kabinen": [
+      "FIRST",
+      "BUSINESS"
+    ],
+    "ziele": [
+      "JNB",
+      "CPT"
+    ]
   },
-
-  "abflughaefen": ["AMS", "FMO"],
-
+  "abflughaefen": [
+    "AMS",
+    "FMO",
+    "MUC",
+    "FRA",
+    "ZRH"
+  ],
   "zeitraum": {
     "hinflug_von": "2026-12-01",
     "hinflug_bis": "2026-12-31",
@@ -16,40 +26,44 @@
     "aufenthalt_min_tage": 5,
     "aufenthalt_max_tage": 10
   },
-
   "schwellwerte": {
-    "_kommentar": "Preis pro Person, Hin- und Rückflug zusammen, in Euro.",
-    "alarm_ab": 6000,
-    "sofort_buchen": 5000,
+    "_kommentar": "Preis pro Person, Hin- und Rückflug zusammen, in Euro — je Kabine.",
+    "FIRST": {
+      "alarm_ab": 6000,
+      "sofort_buchen": 5000
+    },
+    "BUSINESS": {
+      "alarm_ab": 3500,
+      "sofort_buchen": 2800
+    },
     "nur_besser_als_letzter_alarm": true,
     "mindestverbesserung_eur": 200
   },
-
   "filter": {
     "max_umsteige_hinflug": 1,
     "max_umsteige_rueckflug": 1,
-    "first_auf_langstrecke_pflicht": true,
-    "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA oder MUC immer Business, nicht First. Das ist normal und kein Ausschlussgrund."
+    "kabine_auf_langstrecke_pflicht": true,
+    "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA/MUC/ZRH oft eine Klasse tiefer. Entscheidend ist die Kabine auf der Langstrecke."
   },
-
   "quellen": {
     "_kommentar_airlines": "LX zusätzlich, damit AMS-ZRH-JNB mit SWISS First auftaucht.",
-    "airlines": ["LH", "LX"],
+    "airlines": [
+      "LH",
+      "LX"
+    ],
     "max_angebote_pro_abfrage": 25,
     "api_calls_pro_lauf": {
-      "_kommentar": "Budgets für ZWEI Läufe pro Tag ausgelegt: SerpAPI 1/Lauf = ~60 der 100 Gratis-Suchen/Monat, Amadeus (falls je aktiv) 30/Lauf. Duffel/Kiwi/Travelpayouts-Suchen sind kostenlos, nur ratenlimitiert.",
+      "_kommentar": "Budgets für DREI Läufe pro Tag: SerpAPI 1/Lauf = ~90 der 100 Gratis-Suchen/Monat, Duffel 120/Lauf mit Backoff. Amadeus (falls je aktiv) 30/Lauf.",
       "amadeus": 30,
-      "duffel": 60,
+      "duffel": 120,
       "kiwi": 120,
       "travelpayouts": 120,
       "serpapi": 1
     }
   },
-
   "n8n": {
     "webhook_url_env": "N8N_WEBHOOK_URL",
     "shared_secret_env": "N8N_SHARED_SECRET"
   },
-
   "state_datei": "preis_historie.json"
 }
