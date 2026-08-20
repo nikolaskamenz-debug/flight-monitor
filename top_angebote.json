@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-20T06:55:23",
+  "erzeugt_am": "2026-08-20T18:52:36",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -17,6 +17,25 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 14057.28,
       "stand": "2026-08-17"
+    },
+    {
+      "abflughafen": "MUC",
+      "hinflug_datum": "2026-12-08",
+      "rueckflug_datum": "2026-12-16",
+      "preis_pro_person": 7281.56,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH0117 MUC-FRA, LH0572 FRA-JNB",
+      "fluege_rueck": "LH0573 JNB-FRA, LH0098 FRA-MUC",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "JNB",
+      "via": "FRA",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 14563.12,
+      "stand": "2026-08-20"
     },
     {
       "abflughafen": "AMS",
