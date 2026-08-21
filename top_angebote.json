@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-20T18:52:36",
+  "erzeugt_am": "2026-08-21T07:02:45",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -17,6 +17,25 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 14057.28,
       "stand": "2026-08-17"
+    },
+    {
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-06",
+      "preis_pro_person": 7214.89,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LH0572 FRA-JNB",
+      "fluege_rueck": "LH0573 JNB-FRA",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "JNB",
+      "via": "Direkt",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 14429.78,
+      "stand": "2026-08-21"
     },
     {
       "abflughafen": "MUC",
@@ -53,6 +72,25 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 15150.74,
       "stand": "2026-08-17"
+    },
+    {
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-04",
+      "rueckflug_datum": "2026-12-10",
+      "preis_pro_person": 9380.05,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LX3611 FRA-ZRH, LX0282 ZRH-JNB",
+      "fluege_rueck": "LH0573 JNB-FRA",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "JNB",
+      "via": "ZRH",
+      "aufenthalt_tage": 6,
+      "preis_gesamt": 18760.1,
+      "stand": "2026-08-21"
     }
   ]
 }
