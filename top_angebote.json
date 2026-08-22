@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-21T18:49:37",
+  "erzeugt_am": "2026-08-22T06:54:23",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -75,9 +75,9 @@
     },
     {
       "abflughafen": "ZRH",
-      "hinflug_datum": "2026-12-01",
-      "rueckflug_datum": "2026-12-08",
-      "preis_pro_person": 9201.66,
+      "hinflug_datum": "2026-12-20",
+      "rueckflug_datum": "2026-12-27",
+      "preis_pro_person": 8160.14,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
@@ -89,8 +89,8 @@
       "ziel": "JNB",
       "via": "FRA",
       "aufenthalt_tage": 7,
-      "preis_gesamt": 18403.32,
-      "stand": "2026-08-21"
+      "preis_gesamt": 16320.28,
+      "stand": "2026-08-22"
     },
     {
       "abflughafen": "FRA",
@@ -113,22 +113,41 @@
     },
     {
       "abflughafen": "ZRH",
-      "hinflug_datum": "2026-12-04",
-      "rueckflug_datum": "2026-12-11",
-      "preis_pro_person": 10312.58,
+      "hinflug_datum": "2026-12-23",
+      "rueckflug_datum": "2026-12-30",
+      "preis_pro_person": 9868.33,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 0,
       "umsteige_rueck": 1,
       "fluege_hin": "LX0282 ZRH-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA, LH1186 FRA-ZRH",
+      "fluege_rueck": "LH0573 JNB-FRA, LH1182 FRA-ZRH",
       "buchungslink": "",
       "quelle": "duffel",
       "kabine_gesucht": "FIRST",
       "ziel": "JNB",
       "via": "Direkt",
       "aufenthalt_tage": 7,
-      "preis_gesamt": 20625.16,
-      "stand": "2026-08-21"
+      "preis_gesamt": 19736.66,
+      "stand": "2026-08-22"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-08",
+      "preis_pro_person": 11201.42,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2305 AMS-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 22402.84,
+      "stand": "2026-08-22"
     }
   ]
 }
