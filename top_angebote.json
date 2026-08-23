@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-23T06:55:39",
+  "erzeugt_am": "2026-08-23T12:53:29",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -131,6 +131,25 @@
       "stand": "2026-08-22"
     },
     {
+      "abflughafen": "MUC",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-22",
+      "preis_pro_person": 10803.42,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "CPT",
+      "via": "Direkt",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 21606.84,
+      "stand": "2026-08-23"
+    },
+    {
       "abflughafen": "AMS",
       "hinflug_datum": "2026-12-08",
       "rueckflug_datum": "2026-12-15",
@@ -148,25 +167,6 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 22099.6,
       "stand": "2026-08-22"
-    },
-    {
-      "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-01",
-      "rueckflug_datum": "2026-12-08",
-      "preis_pro_person": 11066.11,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "CPT",
-      "via": "Direkt",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 22132.22,
-      "stand": "2026-08-23"
     },
     {
       "abflughafen": "FMO",
