@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-23T18:43:20",
+  "erzeugt_am": "2026-08-24T07:13:45",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -167,6 +167,25 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 22099.6,
       "stand": "2026-08-22"
+    },
+    {
+      "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-08",
+      "preis_pro_person": 11782.7,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2371 ZRH-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH2374 MUC-ZRH",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 23565.4,
+      "stand": "2026-08-24"
     },
     {
       "abflughafen": "FMO",
