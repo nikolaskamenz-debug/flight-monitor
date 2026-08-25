@@ -470,7 +470,7 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
   <!-- Flugvergleich -->
   <section id="fluege">
     <div class="wrap">
-      <div class="eyebrow">Flugvergleich · Johannesburg</div>
+      <div class="eyebrow">Flugvergleich · Johannesburg <span id="datenstand" style="float:right;letter-spacing:normal;text-transform:none"></span></div>
       <div class="flights" id="cards-jnb">
         <div class="card flight leer" data-hafen="AMS" data-ziel="JNB">
           <div class="route-s">AMS <em>✈</em> JNB</div>
@@ -694,7 +694,7 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
   const HAEFEN = ["AMS", "FMO", "MUC", "FRA", "ZRH"];
   const ZIELE = ["JNB", "CPT"];
   try {
-    const r = await fetch("https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/top_angebote.json");
+    const r = await fetch("https://raw.githubusercontent.com/nikolaskamenz-debug/flight-monitor/main/top_angebote.json?t=" + Date.now(), { cache: "no-store" });
     const top = r.ok ? await r.json() : { angebote: [] };
     const alle = (top.angebote || []).map(a => ({
       ...a, ziel: a.ziel || "JNB", kabine: a.kabine_gesucht || "FIRST",
@@ -707,6 +707,11 @@ footer .fine { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0
       .filter(a => a.abflughafen === hafen && a.ziel === ziel && a.kabine === kabine)
       .sort((x, y) => x.preis_pro_person - y.preis_pro_person)[0] || null;
 
+    const stand = document.getElementById("datenstand");
+    if (stand && top.erzeugt_am) {
+      stand.textContent = "Datenstand: " + new Date(top.erzeugt_am).toLocaleString("de-DE",
+        { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) + " Uhr";
+    }
     for (const ziel of ZIELE) {
       const container = document.getElementById("cards-" + ziel.toLowerCase());
       if (!container) continue;
