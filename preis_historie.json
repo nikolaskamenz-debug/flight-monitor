@@ -428,9 +428,9 @@
     "FRA|JNB|2026-12-31|2027-01-05|BUSINESS": 3259.8,
     "FRA|JNB|2026-12-31|2027-01-10|BUSINESS": 3434.15
   },
-  "letzter_lauf": "2026-08-27T17:38:05",
+  "letzter_lauf": "2026-08-27T22:06:44",
   "raster_cursor": {
-    "duffel": 2638,
-    "serpapi": 23
+    "duffel": 2758,
+    "serpapi": 24
   }
 }

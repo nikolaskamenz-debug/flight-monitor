@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-27T17:38:05",
+  "erzeugt_am": "2026-08-27T22:06:44",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -250,6 +250,25 @@
     },
     {
       "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-22",
+      "preis_pro_person": 4485.02,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX0282 ZRH-JNB",
+      "fluege_rueck": "LH0579 JNB-MUC, LH2366 MUC-ZRH",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "Direkt",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 8970.04,
+      "stand": "2026-08-27"
+    },
+    {
+      "abflughafen": "ZRH",
       "hinflug_datum": "2026-12-01",
       "rueckflug_datum": "2026-12-08",
       "preis_pro_person": 4485.81,
@@ -265,25 +284,6 @@
       "via": "FRA",
       "aufenthalt_tage": 7,
       "preis_gesamt": 8971.62,
-      "stand": "2026-08-27"
-    },
-    {
-      "abflughafen": "ZRH",
-      "hinflug_datum": "2026-12-01",
-      "rueckflug_datum": "2026-12-08",
-      "preis_pro_person": 4491.23,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LX0282 ZRH-JNB",
-      "fluege_rueck": "LH0579 JNB-MUC, LH2366 MUC-ZRH",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "JNB",
-      "via": "Direkt",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 8982.46,
       "stand": "2026-08-27"
     },
     {
