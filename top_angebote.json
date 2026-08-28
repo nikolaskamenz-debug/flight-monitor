@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-27T22:06:44",
+  "erzeugt_am": "2026-08-28T02:15:49",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -212,6 +212,25 @@
     },
     {
       "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-09",
+      "rueckflug_datum": "2026-12-19",
+      "preis_pro_person": 2889.06,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2305 AMS-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 5778.12,
+      "stand": "2026-08-28"
+    },
+    {
+      "abflughafen": "AMS",
       "hinflug_datum": "2026-12-10",
       "rueckflug_datum": "2026-12-20",
       "preis_pro_person": 2905.81,
@@ -228,6 +247,44 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 5811.62,
       "stand": "2026-08-25"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-03",
+      "rueckflug_datum": "2026-12-11",
+      "preis_pro_person": 3214.32,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX0729 AMS-ZRH, LX8086 ZRH-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "ZRH",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 6428.64,
+      "stand": "2026-08-28"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-09",
+      "rueckflug_datum": "2026-12-19",
+      "preis_pro_person": 3893.0,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 0,
+      "fluege_hin": "VL 993 AMS-FRA, LH 576 FRA-CPT",
+      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
+      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTA5MgJMSDICTFhqBwgBEgNBTVNyBwgBEgNDUFQaJhIKMjAyNi0xMi0xOTICTEgyAkxYagcIARIDQ1BUcgcIARIDQU1TQAFAAUgDcAGYAQE&tfu=EgIIAQ",
+      "quelle": "serpapi",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "FRA",
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 7786.0,
+      "stand": "2026-08-28"
     },
     {
       "abflughafen": "ZRH",
