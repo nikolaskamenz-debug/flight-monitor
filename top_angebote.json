@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-28T18:34:30",
+  "erzeugt_am": "2026-08-28T21:58:37",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -269,21 +269,21 @@
     },
     {
       "abflughafen": "FMO",
-      "hinflug_datum": "2026-12-02",
-      "rueckflug_datum": "2026-12-11",
-      "preis_pro_person": 3414.97,
+      "hinflug_datum": "2026-12-09",
+      "rueckflug_datum": "2026-12-19",
+      "preis_pro_person": 3396.99,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
-      "fluege_hin": "LH4169 FMO-MUC, LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH4172 MUC-FMO",
+      "fluege_hin": "LH2137 FMO-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH4166 MUC-FMO",
       "buchungslink": "",
       "quelle": "duffel",
       "kabine_gesucht": "BUSINESS",
       "ziel": "CPT",
       "via": "MUC",
-      "aufenthalt_tage": 9,
-      "preis_gesamt": 6829.94,
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 6793.98,
       "stand": "2026-08-28"
     },
     {
