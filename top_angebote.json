@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-31T13:14:30",
+  "erzeugt_am": "2026-08-31T19:05:34",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -756,6 +756,25 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 22099.6,
       "stand": "2026-08-22"
+    },
+    {
+      "abflughafen": "MUC",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-23",
+      "preis_pro_person": 11541.09,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX3625 MUC-ZRH, LX0282 ZRH-JNB",
+      "fluege_rueck": "LX0283 JNB-ZRH, LX3624 ZRH-MUC",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "JNB",
+      "via": "ZRH",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 23082.18,
+      "stand": "2026-08-31"
     },
     {
       "abflughafen": "ZRH",
