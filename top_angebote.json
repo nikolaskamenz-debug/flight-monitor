@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-08-31T19:05:34",
+  "erzeugt_am": "2026-08-31T22:47:42",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -685,7 +685,7 @@
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-04",
       "rueckflug_datum": "2026-12-10",
-      "preis_pro_person": 9380.05,
+      "preis_pro_person": 9294.8,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 0,
@@ -697,8 +697,8 @@
       "ziel": "JNB",
       "via": "ZRH",
       "aufenthalt_tage": 6,
-      "preis_gesamt": 18760.1,
-      "stand": "2026-08-21"
+      "preis_gesamt": 18589.6,
+      "stand": "2026-08-31"
     },
     {
       "abflughafen": "ZRH",
