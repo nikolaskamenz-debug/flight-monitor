@@ -523,9 +523,9 @@
     "FRA|CPT|2026-12-16|2026-12-25|BUSINESS": 3491.93,
     "FRA|CPT|2026-12-16|2026-12-26|BUSINESS": 3491.93
   },
-  "letzter_lauf": "2026-09-01T11:29:39",
+  "letzter_lauf": "2026-09-01T16:25:16",
   "raster_cursor": {
-    "duffel": 718,
-    "serpapi": 32
+    "duffel": 838,
+    "serpapi": 33
   }
 }
