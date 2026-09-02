@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-02T11:04:25",
+  "erzeugt_am": "2026-09-02T16:20:22",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -631,21 +631,21 @@
     {
       "abflughafen": "AMS",
       "hinflug_datum": "2026-12-06",
-      "rueckflug_datum": "2026-12-14",
-      "preis_pro_person": 8064.5,
+      "rueckflug_datum": "2026-12-16",
+      "preis_pro_person": 7713.5,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 0,
-      "fluege_hin": "LH 999 AMS-FRA, LH 572 FRA-JNB",
+      "fluege_hin": "LH 997 AMS-FRA, LH 572 FRA-JNB",
       "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
-      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTA2MgJMSDICTFhqBwgBEgNBTVNyBwgBEgNKTkIaJhIKMjAyNi0xMi0xNDICTEgyAkxYagcIARIDSk5CcgcIARIDQU1TQAFAAUgEcAGYAQE&tfu=EgIIAQ",
+      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTA2MgJMSDICTFhqBwgBEgNBTVNyBwgBEgNKTkIaJhIKMjAyNi0xMi0xNjICTEgyAkxYagcIARIDSk5CcgcIARIDQU1TQAFAAUgEcAGYAQE&tfu=EgIIAQ",
       "quelle": "serpapi",
       "kabine_gesucht": "FIRST",
       "ziel": "JNB",
       "via": "FRA",
-      "aufenthalt_tage": 8,
-      "preis_gesamt": 16129.0,
-      "stand": "2026-09-01"
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 15427.0,
+      "stand": "2026-09-02"
     },
     {
       "abflughafen": "ZRH",
