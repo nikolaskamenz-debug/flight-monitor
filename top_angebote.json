@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-02T16:20:22",
+  "erzeugt_am": "2026-09-02T20:52:22",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -784,7 +784,7 @@
       "abflughafen": "FMO",
       "hinflug_datum": "2026-12-16",
       "rueckflug_datum": "2026-12-22",
-      "preis_pro_person": 13246.82,
+      "preis_pro_person": 13223.42,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
@@ -796,8 +796,8 @@
       "ziel": "CPT",
       "via": "MUC",
       "aufenthalt_tage": 6,
-      "preis_gesamt": 26493.64,
-      "stand": "2026-08-23"
+      "preis_gesamt": 26446.84,
+      "stand": "2026-09-02"
     }
   ]
 }
