@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-01T20:55:43",
+  "erzeugt_am": "2026-09-02T11:04:25",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -727,7 +727,7 @@
       "abflughafen": "AMS",
       "hinflug_datum": "2026-12-08",
       "rueckflug_datum": "2026-12-15",
-      "preis_pro_person": 11049.8,
+      "preis_pro_person": 11029.72,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
@@ -739,8 +739,8 @@
       "ziel": "CPT",
       "via": "MUC",
       "aufenthalt_tage": 7,
-      "preis_gesamt": 22099.6,
-      "stand": "2026-08-22"
+      "preis_gesamt": 22059.44,
+      "stand": "2026-09-02"
     },
     {
       "abflughafen": "MUC",
