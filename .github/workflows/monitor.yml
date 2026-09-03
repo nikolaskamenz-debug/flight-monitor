@@ -2,10 +2,11 @@ name: MEILENFLUCHT — Südafrika Monitor
 
 on:
   schedule:
-    # 08:00, 14:00 und 20:00 Berliner Sommerzeit (im Winter je 1 h früher)
-    - cron: "0 6 * * *"
-    - cron: "0 12 * * *"
-    - cron: "0 18 * * *"
+    # ~8, ~14 und ~20 Uhr Berliner Sommerzeit; Minute 17 meidet die
+    # überlaufenen Voll-Stunden-Warteschlangen von GitHub
+    - cron: "17 5 * * *"
+    - cron: "17 11 * * *"
+    - cron: "17 17 * * *"
   workflow_dispatch:
 
 permissions:
