@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-04T19:49:14",
+  "erzeugt_am": "2026-09-05T09:15:41",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -589,25 +589,6 @@
       "aufenthalt_tage": 9,
       "preis_gesamt": 13042.34,
       "stand": "2026-08-29"
-    },
-    {
-      "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-01",
-      "rueckflug_datum": "2026-12-06",
-      "preis_pro_person": 7214.89,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LH0572 FRA-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "JNB",
-      "via": "Direkt",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 14429.78,
-      "stand": "2026-08-21"
     },
     {
       "abflughafen": "AMS",
