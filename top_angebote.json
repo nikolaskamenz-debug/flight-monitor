@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-08T15:17:02",
+  "erzeugt_am": "2026-09-08T20:06:44",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -442,7 +442,7 @@
       "abflughafen": "MUC",
       "hinflug_datum": "2026-12-23",
       "rueckflug_datum": "2026-12-28",
-      "preis_pro_person": 3996.8,
+      "preis_pro_person": 3778.0,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 1,
       "umsteige_rueck": 0,
@@ -454,8 +454,8 @@
       "ziel": "CPT",
       "via": "JNB",
       "aufenthalt_tage": 5,
-      "preis_gesamt": 7993.6,
-      "stand": "2026-08-29"
+      "preis_gesamt": 7556.0,
+      "stand": "2026-09-08"
     },
     {
       "abflughafen": "ZRH",
