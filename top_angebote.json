@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-10T09:52:51",
+  "erzeugt_am": "2026-09-10T15:10:50",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -421,21 +421,21 @@
     },
     {
       "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-14",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 8219.29,
+      "hinflug_datum": "2026-12-31",
+      "rueckflug_datum": "2027-01-10",
+      "preis_pro_person": 7828.47,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
       "fluege_hin": "LX0735 AMS-ZRH, LX0282 ZRH-JNB",
-      "fluege_rueck": "LX0283 JNB-ZRH, LX0724 ZRH-AMS",
+      "fluege_rueck": "LH0573 JNB-FRA, LH4206 FRA-AMS",
       "buchungslink": "",
       "quelle": "duffel",
       "kabine_gesucht": "FIRST",
       "ziel": "JNB",
       "via": "ZRH",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 16438.58,
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 15656.94,
       "stand": "2026-09-10"
     },
     {
