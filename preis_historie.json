@@ -549,9 +549,9 @@
     "MUC|CPT|2026-12-14|2026-12-24|BUSINESS": 3497.16,
     "FRA|CPT|2026-12-13|2026-12-19|BUSINESS": 3367.05
   },
-  "letzter_lauf": "2026-09-10T15:10:50",
+  "letzter_lauf": "2026-09-10T19:54:27",
   "raster_cursor": {
-    "duffel": 238,
-    "serpapi": 47
+    "duffel": 358,
+    "serpapi": 48
   }
 }
