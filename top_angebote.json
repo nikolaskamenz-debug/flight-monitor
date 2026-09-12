@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-12T14:19:38",
+  "erzeugt_am": "2026-09-12T19:35:16",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -458,6 +458,25 @@
       "stand": "2026-09-12"
     },
     {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-08",
+      "rueckflug_datum": "2026-12-16",
+      "preis_pro_person": 9353.8,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2305 AMS-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 18707.6,
+      "stand": "2026-09-12"
+    },
+    {
       "abflughafen": "ZRH",
       "hinflug_datum": "2026-12-23",
       "rueckflug_datum": "2026-12-30",
@@ -494,25 +513,6 @@
       "aufenthalt_tage": 8,
       "preis_gesamt": 21244.8,
       "stand": "2026-09-11"
-    },
-    {
-      "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-08",
-      "rueckflug_datum": "2026-12-15",
-      "preis_pro_person": 11029.72,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LH2305 AMS-MUC, LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "CPT",
-      "via": "MUC",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 22059.44,
-      "stand": "2026-09-02"
     },
     {
       "abflughafen": "FMO",
