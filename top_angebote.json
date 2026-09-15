@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-15T15:45:58",
+  "erzeugt_am": "2026-09-15T20:27:25",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -19,6 +19,25 @@
       "aufenthalt_tage": 6,
       "preis_gesamt": 4836.32,
       "stand": "2026-09-04"
+    },
+    {
+      "abflughafen": "FMO",
+      "hinflug_datum": "2026-12-02",
+      "rueckflug_datum": "2026-12-07",
+      "preis_pro_person": 2696.81,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH4169 FMO-MUC, LH0578 MUC-JNB",
+      "fluege_rueck": "LH0579 JNB-MUC, LH4166 MUC-FMO",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "MUC",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 5393.62,
+      "stand": "2026-09-15"
     },
     {
       "abflughafen": "AMS",
