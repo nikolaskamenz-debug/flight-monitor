@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-14T21:09:21",
+  "erzeugt_am": "2026-09-15T10:14:47",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -42,6 +42,25 @@
     {
       "abflughafen": "AMS",
       "hinflug_datum": "2026-12-09",
+      "rueckflug_datum": "2026-12-14",
+      "preis_pro_person": 2970.33,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH0999 AMS-FRA, LH0572 FRA-JNB",
+      "fluege_rueck": "LX0283 JNB-ZRH, LX0724 ZRH-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "FRA",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 5940.66,
+      "stand": "2026-09-15"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-09",
       "rueckflug_datum": "2026-12-19",
       "preis_pro_person": 3010.77,
       "kabine_langstrecke": "BUSINESS",
@@ -76,6 +95,25 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 6280.26,
       "stand": "2026-09-09"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-02",
+      "rueckflug_datum": "2026-12-09",
+      "preis_pro_person": 3258.22,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2309 AMS-MUC, LH0578 MUC-JNB",
+      "fluege_rueck": "LX0283 JNB-ZRH, LX0724 ZRH-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "MUC",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 6516.44,
+      "stand": "2026-09-15"
     },
     {
       "abflughafen": "FMO",
@@ -247,25 +285,6 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 15656.94,
       "stand": "2026-09-10"
-    },
-    {
-      "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-04",
-      "rueckflug_datum": "2026-12-10",
-      "preis_pro_person": 9294.8,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LX3611 FRA-ZRH, LX0282 ZRH-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "JNB",
-      "via": "ZRH",
-      "aufenthalt_tage": 6,
-      "preis_gesamt": 18589.6,
-      "stand": "2026-08-31"
     },
     {
       "abflughafen": "ZRH",
