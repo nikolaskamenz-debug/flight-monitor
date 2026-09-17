@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-16T20:21:27",
+  "erzeugt_am": "2026-09-17T10:10:48",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -345,6 +345,63 @@
     },
     {
       "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-02",
+      "rueckflug_datum": "2026-12-10",
+      "preis_pro_person": 4730.31,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2373 ZRH-MUC, LH0578 MUC-JNB",
+      "fluege_rueck": "LH0579 JNB-MUC, LH2368 MUC-ZRH",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "MUC",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 9460.62,
+      "stand": "2026-09-17"
+    },
+    {
+      "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-08",
+      "preis_pro_person": 4737.24,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH1197 ZRH-FRA, LH0572 FRA-JNB",
+      "fluege_rueck": "LH0579 JNB-MUC, LH2366 MUC-ZRH",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "FRA",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 9474.48,
+      "stand": "2026-09-17"
+    },
+    {
+      "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-08",
+      "preis_pro_person": 4743.97,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX0282 ZRH-JNB",
+      "fluege_rueck": "LH0579 JNB-MUC, LH2366 MUC-ZRH",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "Direkt",
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 9487.94,
+      "stand": "2026-09-17"
+    },
+    {
+      "abflughafen": "ZRH",
       "hinflug_datum": "2026-12-15",
       "rueckflug_datum": "2026-12-24",
       "preis_pro_person": 6088.88,
@@ -570,25 +627,6 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 22992.54,
       "stand": "2026-09-14"
-    },
-    {
-      "abflughafen": "FMO",
-      "hinflug_datum": "2026-12-16",
-      "rueckflug_datum": "2026-12-22",
-      "preis_pro_person": 13223.42,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LH4169 FMO-MUC, LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH4172 MUC-FMO",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "CPT",
-      "via": "MUC",
-      "aufenthalt_tage": 6,
-      "preis_gesamt": 26446.84,
-      "stand": "2026-09-02"
     }
   ]
 }

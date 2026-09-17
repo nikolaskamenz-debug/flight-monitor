@@ -553,11 +553,12 @@
     "MUC|JNB|2026-12-30|2027-01-05|BUSINESS": 3416.84,
     "MUC|JNB|2026-12-30|2027-01-07|BUSINESS": 3416.84,
     "MUC|JNB|2026-12-31|2027-01-05|BUSINESS": 3348.4,
-    "MUC|JNB|2026-12-31|2027-01-07|BUSINESS": 3348.4
+    "MUC|JNB|2026-12-31|2027-01-07|BUSINESS": 3348.4,
+    "FRA|JNB|2026-12-29|2027-01-07|BUSINESS": 3445.42
   },
-  "letzter_lauf": "2026-09-16T20:21:27",
+  "letzter_lauf": "2026-09-17T10:10:49",
   "raster_cursor": {
-    "duffel": 2518,
+    "duffel": 2638,
     "serpapi": 60
   }
 }
