@@ -570,9 +570,9 @@
     "FMO|CPT|2026-12-14|2026-12-22|BUSINESS": 3453.34,
     "FMO|CPT|2026-12-14|2026-12-23|BUSINESS": 3136.16
   },
-  "letzter_lauf": "2026-09-18T15:10:30",
+  "letzter_lauf": "2026-09-18T19:49:16",
   "raster_cursor": {
-    "duffel": 3118,
-    "serpapi": 61
+    "duffel": 3238,
+    "serpapi": 62
   }
 }
