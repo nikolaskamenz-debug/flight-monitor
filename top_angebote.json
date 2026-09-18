@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-18T09:55:35",
+  "erzeugt_am": "2026-09-18T15:10:29",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -287,6 +287,25 @@
       "stand": "2026-09-07"
     },
     {
+      "abflughafen": "FMO",
+      "hinflug_datum": "2026-12-14",
+      "rueckflug_datum": "2026-12-19",
+      "preis_pro_person": 3136.16,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH4169 FMO-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH4166 MUC-FMO",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 6272.32,
+      "stand": "2026-09-18"
+    },
+    {
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-13",
       "rueckflug_datum": "2026-12-23",
@@ -304,25 +323,6 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 6280.26,
       "stand": "2026-09-09"
-    },
-    {
-      "abflughafen": "FMO",
-      "hinflug_datum": "2026-12-09",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 3295.92,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LH4169 FMO-MUC, LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH4166 MUC-FMO",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "CPT",
-      "via": "MUC",
-      "aufenthalt_tage": 10,
-      "preis_gesamt": 6591.84,
-      "stand": "2026-09-08"
     },
     {
       "abflughafen": "MUC",
