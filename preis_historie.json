@@ -564,11 +564,12 @@
     "AMS|CPT|2026-12-05|2026-12-13|BUSINESS": 3400.11,
     "AMS|CPT|2026-12-13|2026-12-22|BUSINESS": 3465.63,
     "AMS|CPT|2026-12-14|2026-12-22|BUSINESS": 3444.93,
-    "AMS|CPT|2026-12-15|2026-12-22|BUSINESS": 3493.23
+    "AMS|CPT|2026-12-15|2026-12-22|BUSINESS": 3493.23,
+    "AMS|CPT|2026-12-31|2027-01-06|BUSINESS": 3409.63
   },
-  "letzter_lauf": "2026-09-17T20:32:32",
+  "letzter_lauf": "2026-09-18T09:55:35",
   "raster_cursor": {
-    "duffel": 2878,
+    "duffel": 2998,
     "serpapi": 61
   }
 }
