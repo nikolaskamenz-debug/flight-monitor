@@ -1,25 +1,6 @@
 {
-  "erzeugt_am": "2026-09-18T19:49:16",
+  "erzeugt_am": "2026-09-19T09:40:31",
   "angebote": [
-    {
-      "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-08",
-      "rueckflug_datum": "2026-12-14",
-      "preis_pro_person": 2418.16,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LX0735 AMS-ZRH, LX0282 ZRH-JNB",
-      "fluege_rueck": "LX0283 JNB-ZRH, LX0724 ZRH-AMS",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "JNB",
-      "via": "ZRH",
-      "aufenthalt_tage": 6,
-      "preis_gesamt": 4836.32,
-      "stand": "2026-09-04"
-    },
     {
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-03",
@@ -326,9 +307,9 @@
     },
     {
       "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-09",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 3528.99,
+      "hinflug_datum": "2026-12-14",
+      "rueckflug_datum": "2026-12-24",
+      "preis_pro_person": 3232.94,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 0,
       "umsteige_rueck": 0,
@@ -340,8 +321,27 @@
       "ziel": "CPT",
       "via": "Direkt",
       "aufenthalt_tage": 10,
-      "preis_gesamt": 7057.98,
-      "stand": "2026-09-18"
+      "preis_gesamt": 6465.88,
+      "stand": "2026-09-19"
+    },
+    {
+      "abflughafen": "MUC",
+      "hinflug_datum": "2026-12-14",
+      "rueckflug_datum": "2026-12-24",
+      "preis_pro_person": 3305.27,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LX3621 MUC-ZRH, LX8086 ZRH-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "ZRH",
+      "aufenthalt_tage": 10,
+      "preis_gesamt": 6610.54,
+      "stand": "2026-09-19"
     },
     {
       "abflughafen": "MUC",
@@ -363,23 +363,23 @@
       "stand": "2026-09-18"
     },
     {
-      "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-09",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 3652.28,
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-02",
+      "rueckflug_datum": "2026-12-09",
+      "preis_pro_person": 3594.77,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 1,
       "umsteige_rueck": 0,
-      "fluege_hin": "LX3625 MUC-ZRH, LX8084 ZRH-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC",
+      "fluege_hin": "LX3611 FRA-ZRH, LX8084 ZRH-CPT",
+      "fluege_rueck": "LH0577 CPT-FRA",
       "buchungslink": "",
       "quelle": "duffel",
       "kabine_gesucht": "BUSINESS",
       "ziel": "CPT",
       "via": "ZRH",
-      "aufenthalt_tage": 10,
-      "preis_gesamt": 7304.56,
-      "stand": "2026-09-18"
+      "aufenthalt_tage": 7,
+      "preis_gesamt": 7189.54,
+      "stand": "2026-09-19"
     },
     {
       "abflughafen": "MUC",
@@ -399,6 +399,25 @@
       "aufenthalt_tage": 5,
       "preis_gesamt": 7556.0,
       "stand": "2026-09-08"
+    },
+    {
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-09",
+      "preis_pro_person": 3809.46,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LH0576 FRA-CPT",
+      "fluege_rueck": "LH0577 CPT-FRA",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "Direkt",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 7618.92,
+      "stand": "2026-09-19"
     },
     {
       "abflughafen": "ZRH",
