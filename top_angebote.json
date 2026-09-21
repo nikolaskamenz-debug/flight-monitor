@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-21T10:51:28",
+  "erzeugt_am": "2026-09-21T17:15:49",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -592,22 +592,22 @@
     },
     {
       "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-04",
-      "rueckflug_datum": "2026-12-12",
-      "preis_pro_person": 7431.83,
+      "hinflug_datum": "2026-12-08",
+      "rueckflug_datum": "2026-12-16",
+      "preis_pro_person": 7431.75,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
       "fluege_hin": "LH0117 MUC-FRA, LH0572 FRA-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA, LH0102 FRA-MUC",
+      "fluege_rueck": "LH0573 JNB-FRA, LH0098 FRA-MUC",
       "buchungslink": "",
       "quelle": "duffel",
       "kabine_gesucht": "FIRST",
       "ziel": "JNB",
       "via": "FRA",
       "aufenthalt_tage": 8,
-      "preis_gesamt": 14863.66,
-      "stand": "2026-09-11"
+      "preis_gesamt": 14863.5,
+      "stand": "2026-09-21"
     },
     {
       "abflughafen": "ZRH",
