@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-21T21:16:34",
+  "erzeugt_am": "2026-09-22T10:06:38",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -174,25 +174,6 @@
     },
     {
       "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-09",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 2889.03,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LH2305 AMS-MUC, LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "CPT",
-      "via": "MUC",
-      "aufenthalt_tage": 10,
-      "preis_gesamt": 5778.06,
-      "stand": "2026-09-07"
-    },
-    {
-      "abflughafen": "AMS",
       "hinflug_datum": "2026-12-13",
       "rueckflug_datum": "2026-12-20",
       "preis_pro_person": 2960.48,
@@ -247,25 +228,6 @@
       "aufenthalt_tage": 10,
       "preis_gesamt": 5991.36,
       "stand": "2026-09-17"
-    },
-    {
-      "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-09",
-      "rueckflug_datum": "2026-12-19",
-      "preis_pro_person": 3010.77,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LX0735 AMS-ZRH, LX8086 ZRH-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC, LH2310 MUC-AMS",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "CPT",
-      "via": "ZRH",
-      "aufenthalt_tage": 10,
-      "preis_gesamt": 6021.54,
-      "stand": "2026-09-07"
     },
     {
       "abflughafen": "FMO",
@@ -725,13 +687,13 @@
     },
     {
       "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-03",
-      "rueckflug_datum": "2026-12-08",
-      "preis_pro_person": 9603.29,
+      "hinflug_datum": "2026-12-23",
+      "rueckflug_datum": "2026-12-28",
+      "preis_pro_person": 9598.34,
       "kabine_langstrecke": "FIRST",
       "umsteige_hin": 1,
       "umsteige_rueck": 0,
-      "fluege_hin": "LX3639 FRA-ZRH, LX0282 ZRH-JNB",
+      "fluege_hin": "LX3611 FRA-ZRH, LX0282 ZRH-JNB",
       "fluege_rueck": "LH0573 JNB-FRA",
       "buchungslink": "",
       "quelle": "duffel",
@@ -739,8 +701,8 @@
       "ziel": "JNB",
       "via": "ZRH",
       "aufenthalt_tage": 5,
-      "preis_gesamt": 19206.58,
-      "stand": "2026-09-21"
+      "preis_gesamt": 19196.68,
+      "stand": "2026-09-22"
     },
     {
       "abflughafen": "MUC",
