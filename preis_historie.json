@@ -587,9 +587,9 @@
     "FRA|CPT|2026-12-14|2026-12-20|BUSINESS": 3168.19,
     "FRA|CPT|2026-12-14|2026-12-22|BUSINESS": 3168.19
   },
-  "letzter_lauf": "2026-09-23T10:08:50",
+  "letzter_lauf": "2026-09-23T15:38:57",
   "raster_cursor": {
-    "duffel": 1078,
-    "serpapi": 73
+    "duffel": 1198,
+    "serpapi": 74
   }
 }
