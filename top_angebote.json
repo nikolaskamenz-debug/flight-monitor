@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-23T15:38:57",
+  "erzeugt_am": "2026-09-23T20:35:22",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -722,6 +722,25 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 20823.4,
       "stand": "2026-09-12"
+    },
+    {
+      "abflughafen": "FMO",
+      "hinflug_datum": "2026-12-16",
+      "rueckflug_datum": "2026-12-22",
+      "preis_pro_person": 11488.17,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LH2137 FMO-MUC, LH0574 MUC-CPT",
+      "fluege_rueck": "LH0575 CPT-MUC, LH4172 MUC-FMO",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "FIRST",
+      "ziel": "CPT",
+      "via": "MUC",
+      "aufenthalt_tage": 6,
+      "preis_gesamt": 22976.34,
+      "stand": "2026-09-23"
     },
     {
       "abflughafen": "ZRH",
