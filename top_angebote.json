@@ -1,6 +1,25 @@
 {
-  "erzeugt_am": "2026-09-25T10:22:10",
+  "erzeugt_am": "2026-09-25T16:01:26",
   "angebote": [
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-01",
+      "rueckflug_datum": "2026-12-07",
+      "preis_pro_person": 2514.12,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX0735 AMS-ZRH, LX0282 ZRH-JNB",
+      "fluege_rueck": "LX0283 JNB-ZRH, LX0724 ZRH-AMS",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "JNB",
+      "via": "ZRH",
+      "aufenthalt_tage": 6,
+      "preis_gesamt": 5028.24,
+      "stand": "2026-09-25"
+    },
     {
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-03",
@@ -193,9 +212,9 @@
     },
     {
       "abflughafen": "AMS",
-      "hinflug_datum": "2026-12-09",
+      "hinflug_datum": "2026-12-05",
       "rueckflug_datum": "2026-12-14",
-      "preis_pro_person": 2970.33,
+      "preis_pro_person": 2966.33,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 1,
       "umsteige_rueck": 1,
@@ -206,9 +225,9 @@
       "kabine_gesucht": "BUSINESS",
       "ziel": "JNB",
       "via": "FRA",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 5940.66,
-      "stand": "2026-09-15"
+      "aufenthalt_tage": 9,
+      "preis_gesamt": 5932.66,
+      "stand": "2026-09-25"
     },
     {
       "abflughafen": "AMS",
