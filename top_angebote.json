@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-27T15:54:46",
+  "erzeugt_am": "2026-09-27T20:24:10",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -285,6 +285,25 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 9487.94,
       "stand": "2026-09-17"
+    },
+    {
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-31",
+      "rueckflug_datum": "2027-01-05",
+      "preis_pro_person": 4857.5,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 0,
+      "fluege_hin": "VL 993 AMS-FRA, LH 576 FRA-CPT",
+      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
+      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTMxMgJMSDICTFhqBwgBEgNBTVNyBwgBEgNDUFQaJhIKMjAyNy0wMS0wNTICTEgyAkxYagcIARIDQ1BUcgcIARIDQU1TQAFAAUgDcAGYAQE&tfu=EgIIAQ",
+      "quelle": "serpapi",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "CPT",
+      "via": "FRA",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 9715.0,
+      "stand": "2026-09-27"
     },
     {
       "abflughafen": "ZRH",
