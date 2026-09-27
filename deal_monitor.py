@@ -219,6 +219,10 @@ def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
     if not serpapi_quelle.verfuegbar():
         print("Quelle serpapi: Zugangsdaten nicht gesetzt — übersprungen.")
         return []
+    if os.environ.get("GITHUB_ACTIONS") and datetime.now().hour < 3:
+        print("Quelle serpapi: Nachtlauf — Nachprüfung ausgesetzt "
+              "(schont das Monatskontingent).")
+        return []
 
     budget = CONFIG["quellen"]["api_calls_pro_lauf"].get("serpapi", 3)
 
@@ -330,7 +334,7 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
     frisch.sort(key=lambda e: e["preis_pro_person"])
     p.write_text(json.dumps(
         {"erzeugt_am": datetime.now().isoformat(timespec="seconds"),
-         "angebote": frisch[:60]},
+         "angebote": frisch[:100]},
         indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Website-Daten: {len(frisch[:12])} Strecken in {WEB_DATEI}")
 

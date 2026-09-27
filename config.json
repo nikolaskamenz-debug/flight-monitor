@@ -1,6 +1,6 @@
 {
   "reise": {
-    "beschreibung": "MEILENFLUCHT — Südafrika im Dezember (JNB & CPT), mit Thankmar",
+    "beschreibung": "MEILENFLUCHT — Dezember-Fernziele (JNB, CPT, SEZ & HKG), mit Thankmar",
     "passagiere": 2,
     "kabinen": [
       "FIRST",
@@ -8,7 +8,9 @@
     ],
     "ziele": [
       "JNB",
-      "CPT"
+      "CPT",
+      "SEZ",
+      "HKG"
     ]
   },
   "abflughaefen": [
@@ -46,16 +48,17 @@
     "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA/MUC/ZRH oft eine Klasse tiefer. Entscheidend ist die Kabine auf der Langstrecke."
   },
   "quellen": {
-    "_kommentar_airlines": "LX zusätzlich, damit AMS-ZRH-JNB mit SWISS First auftaucht.",
+    "_kommentar_airlines": "LX für AMS-ZRH-JNB (SWISS First), 4Y für die Seychellen (Discover Airlines, nur Business).",
     "airlines": [
       "LH",
-      "LX"
+      "LX",
+      "4Y"
     ],
     "max_angebote_pro_abfrage": 25,
     "api_calls_pro_lauf": {
       "_kommentar": "Budgets für DREI Läufe pro Tag: SerpAPI 1/Lauf = ~90 der 100 Gratis-Suchen/Monat, Duffel 120/Lauf mit Backoff. Amadeus (falls je aktiv) 30/Lauf.",
       "amadeus": 30,
-      "duffel": 120,
+      "duffel": 150,
       "kiwi": 120,
       "travelpayouts": 120,
       "serpapi": 1

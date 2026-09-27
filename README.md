@@ -2,8 +2,8 @@
 
 **Essen. Trinken. Status retten.**
 
-Preismonitor (dreimal täglich: 8, 14 und 20 Uhr deutscher Zeit) für
-LH-Group-Flüge nach **Johannesburg (JNB) und Kapstadt (CPT)** — **First und
+Preismonitor (viermal täglich: nachts, 8, 14 und 20 Uhr deutscher Zeit) für
+LH-Group-Flüge nach **Johannesburg (JNB), Kapstadt (CPT), Mahé (SEZ) und Hongkong (HKG)** — **First und
 Business** getrennt: zwei Personen, Hin- und Rückflug im Dezember, 5–10 Tage
 Aufenthalt, Abflug ab **AMS, FMO, MUC, FRA oder ZRH**. Gemailt wird nur, wenn
 ein Angebot unter der Kabinen-Schwelle liegt (First 6.000 €, Business 3.500 €
@@ -22,7 +22,7 @@ GitHub Actions (06/12/18 UTC = 8/14/20 Uhr Sommerzeit)
        └─ POST an n8n-Webhook  ->  n8n formatiert & verschickt die Mail
 ```
 
-Der Suchraum (2 Kabinen × 2 Ziele × 5 Abflughäfen × Dezember-Datumspaare ≈ 3.700 Kombinationen) wird pro Quelle mit einem Fenster-Cursor abgearbeitet: Jeder Lauf scannt das nächste Stück, nichts wird übersprungen. Mit drei Läufen täglich und 120 Duffel-Abfragen pro Lauf ist alles etwa alle 10 Tage einmal komplett abgedeckt.
+Der Suchraum (2 Kabinen × 4 Ziele × 5 Abflughäfen × Dezember-Datumspaare ≈ 7.400 Kombinationen) wird pro Quelle mit einem Fenster-Cursor abgearbeitet: Jeder Lauf scannt das nächste Stück, nichts wird übersprungen. Mit vier Läufen täglich und 150 Duffel-Abfragen pro Lauf ist alles etwa alle 12 Tage einmal komplett abgedeckt.
 
 ## Quellen
 
