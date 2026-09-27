@@ -26,7 +26,7 @@
     "rueckflug_von": "2026-12-05",
     "rueckflug_bis": "2027-01-15",
     "aufenthalt_min_tage": 5,
-    "aufenthalt_max_tage": 10
+    "aufenthalt_max_tage": 8
   },
   "schwellwerte": {
     "_kommentar": "Preis pro Person, Hin- und Rückflug zusammen, in Euro — je Kabine.",

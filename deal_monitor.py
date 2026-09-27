@@ -326,10 +326,13 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
         if alt is None or e["preis_pro_person"] < alt["preis_pro_person"]:
             bestand[k] = e
 
+    z = CONFIG["zeitraum"]
     frisch = [
         e for e in bestand.values()
         if date.fromisoformat(e["hinflug_datum"]) >= heute
         and (heute - date.fromisoformat(e.get("stand", "1970-01-01"))).days <= 14
+        and z["aufenthalt_min_tage"] <= e.get("aufenthalt_tage", 0)
+            <= z["aufenthalt_max_tage"]
     ]
     frisch.sort(key=lambda e: e["preis_pro_person"])
     p.write_text(json.dumps(
