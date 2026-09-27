@@ -1,6 +1,6 @@
 {
   "reise": {
-    "beschreibung": "MEILENFLUCHT — Dezember-Fernziele (JNB, CPT, SZX & HKG), mit Thankmar",
+    "beschreibung": "MEILENFLUCHT — Dezember-Fernziele (JNB, CPT & HKG), mit Thankmar",
     "passagiere": 2,
     "kabinen": [
       "FIRST",
@@ -9,7 +9,6 @@
     "ziele": [
       "JNB",
       "CPT",
-      "SZX",
       "HKG"
     ]
   },
@@ -48,7 +47,7 @@
     "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA/MUC/ZRH oft eine Klasse tiefer. Entscheidend ist die Kabine auf der Langstrecke."
   },
   "quellen": {
-    "_kommentar_airlines": "Standard: LH-Group (LX für ZRH-Routen). Shenzhen fliegt die LH-Group nicht — dort sind Air China (CA), Shenzhen Airlines (ZH), China Southern (CZ) und Hainan (HU) zugelassen.",
+    "_kommentar_airlines": "LH-Group: LH plus LX für die ZRH-Routen (SWISS fliegt JNB und HKG).",
     "airlines": [
       "LH",
       "LX"
@@ -61,16 +60,6 @@
       "kiwi": 120,
       "travelpayouts": 120,
       "serpapi": 1
-    },
-    "airlines_je_ziel": {
-      "SZX": [
-        "LH",
-        "LX",
-        "CA",
-        "ZH",
-        "CZ",
-        "HU"
-      ]
     }
   },
   "n8n": {
