@@ -123,12 +123,13 @@ def _abfragen(name, modul, auswahl) -> tuple[list[Angebot], int]:
     abgearbeitet = 0
     fehler_in_folge = 0
     for hafen, ziel, hin, rueck, kabine in auswahl:
+        airlines = q_cfg.get("airlines_je_ziel", {}).get(ziel, q_cfg["airlines"])
         try:
             treffer = modul.suche_fluege(
                 hafen, ziel, hin, rueck,
                 kabine=kabine,
                 passagiere=reise["passagiere"],
-                airlines=q_cfg["airlines"],
+                airlines=airlines,
                 max_angebote=q_cfg["max_angebote_pro_abfrage"],
             )
             fehler_in_folge = 0

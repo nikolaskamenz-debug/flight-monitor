@@ -3,7 +3,7 @@
 **Essen. Trinken. Status retten.**
 
 Preismonitor (viermal täglich: nachts, 8, 14 und 20 Uhr deutscher Zeit) für
-LH-Group-Flüge nach **Johannesburg (JNB), Kapstadt (CPT), Mahé (SEZ) und Hongkong (HKG)** — **First und
+LH-Group-Flüge nach **Johannesburg (JNB), Kapstadt (CPT), Shenzhen (SZX) und Hongkong (HKG)** — **First und
 Business** getrennt: zwei Personen, Hin- und Rückflug im Dezember, 5–8 Tage
 Aufenthalt, Abflug ab **AMS, FMO, MUC, FRA oder ZRH**. Gemailt wird nur, wenn
 ein Angebot unter der Kabinen-Schwelle liegt (First 6.000 €, Business 3.500 €
