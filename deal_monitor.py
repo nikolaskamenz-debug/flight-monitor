@@ -332,6 +332,7 @@ def webseite_daten_schreiben(alle: list[Angebot]) -> None:
         e for e in bestand.values()
         if date.fromisoformat(e["hinflug_datum"]) >= heute
         and z["hinflug_von"] <= e["hinflug_datum"] <= z["hinflug_bis"]
+        and e["rueckflug_datum"] <= z["rueckflug_bis"]
         and (heute - date.fromisoformat(e.get("stand", "1970-01-01"))).days <= 14
         and z["aufenthalt_min_tage"] <= e.get("aufenthalt_tage", 0)
             <= z["aufenthalt_max_tage"]
