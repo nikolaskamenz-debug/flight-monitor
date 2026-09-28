@@ -4,9 +4,9 @@
 
 Preismonitor (viermal täglich: nachts, 8, 14 und 20 Uhr deutscher Zeit) für
 LH-Group-Flüge nach **Johannesburg (JNB), Kapstadt (CPT) und Hongkong (HKG)** — **First und
-Business** getrennt: zwei Personen, Hin- und Rückflug im Dezember, 5–8 Tage
-Aufenthalt, Abflug ab **AMS, FMO, MUC, FRA oder ZRH**. Gemailt wird nur, wenn
-ein Angebot unter der Kabinen-Schwelle liegt (First 6.000 €, Business 3.500 €
+Business** getrennt: zwei Personen, Hin- und Rückflug 15.–22. Dezember, 5–8 Tage
+Aufenthalt, Abflug ab **MKF (Münster Hbf per Lufthansa Express Rail), FMO, MUC, FRA oder ZRH**. Gemailt wird nur, wenn
+ein Angebot unter der Kabinen-Schwelle liegt (First 6.000 €, Business 3.000 €
 p. P.) und spürbar besser ist als alles bisher Gesehene.
 
 ## Wie es funktioniert

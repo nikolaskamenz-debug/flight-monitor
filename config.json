@@ -13,17 +13,17 @@
     ]
   },
   "abflughaefen": [
-    "AMS",
+    "MKF",
     "FMO",
     "MUC",
     "FRA",
     "ZRH"
   ],
   "zeitraum": {
-    "hinflug_von": "2026-12-01",
-    "hinflug_bis": "2026-12-31",
-    "rueckflug_von": "2026-12-05",
-    "rueckflug_bis": "2027-01-15",
+    "hinflug_von": "2026-12-15",
+    "hinflug_bis": "2026-12-22",
+    "rueckflug_von": "2026-12-20",
+    "rueckflug_bis": "2026-12-22",
     "aufenthalt_min_tage": 5,
     "aufenthalt_max_tage": 8
   },
@@ -34,7 +34,7 @@
       "sofort_buchen": 5000
     },
     "BUSINESS": {
-      "alarm_ab": 3500,
+      "alarm_ab": 3000,
       "sofort_buchen": 2800
     },
     "nur_besser_als_letzter_alarm": true,
@@ -44,7 +44,7 @@
     "max_umsteige_hinflug": 1,
     "max_umsteige_rueckflug": 1,
     "kabine_auf_langstrecke_pflicht": true,
-    "_kommentar_zubringer": "Ab AMS und FMO ist der Zubringer nach FRA/MUC/ZRH oft eine Klasse tiefer. Entscheidend ist die Kabine auf der Langstrecke."
+    "_kommentar_zubringer": "MKF = Münster Hbf (Lufthansa Express Rail: ICE-Zubringer nach FRA zählt als Flugsegment). Zubringer sind oft eine Klasse tiefer — entscheidend ist die Kabine auf der Langstrecke."
   },
   "quellen": {
     "_kommentar_airlines": "LH-Group: LH plus LX für die ZRH-Routen (SWISS fliegt JNB und HKG).",
