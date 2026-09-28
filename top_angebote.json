@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-27T20:24:10",
+  "erzeugt_am": "2026-09-28T08:57:29",
   "angebote": [
     {
       "abflughafen": "AMS",
@@ -363,23 +363,23 @@
       "stand": "2026-09-21"
     },
     {
-      "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-15",
-      "rueckflug_datum": "2026-12-22",
-      "preis_pro_person": 9319.86,
+      "abflughafen": "AMS",
+      "hinflug_datum": "2026-12-20",
+      "rueckflug_datum": "2026-12-28",
+      "preis_pro_person": 8212.5,
       "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
+      "umsteige_hin": 1,
       "umsteige_rueck": 0,
-      "fluege_hin": "LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC",
-      "buchungslink": "",
-      "quelle": "duffel",
+      "fluege_hin": "VL 993 AMS-FRA, LH 572 FRA-JNB",
+      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
+      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTIwMgJMSDICTFhqBwgBEgNBTVNyBwgBEgNKTkIaJhIKMjAyNi0xMi0yODICTEgyAkxYagcIARIDSk5CcgcIARIDQU1TQAFAAUgEcAGYAQE&tfu=EgIIAQ",
+      "quelle": "serpapi",
       "kabine_gesucht": "FIRST",
-      "ziel": "CPT",
-      "via": "Direkt",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 18639.72,
-      "stand": "2026-09-13"
+      "ziel": "JNB",
+      "via": "FRA",
+      "aufenthalt_tage": 8,
+      "preis_gesamt": 16425.0,
+      "stand": "2026-09-28"
     },
     {
       "abflughafen": "FRA",
