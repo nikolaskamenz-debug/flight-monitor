@@ -615,9 +615,9 @@
     "AMS|CPT|2026-12-21|2026-12-29|BUSINESS": 3475.62,
     "AMS|CPT|2026-12-31|2027-01-05|BUSINESS": 3409.94
   },
-  "letzter_lauf": "2026-09-28T08:57:29",
+  "letzter_lauf": "2026-09-28T11:40:24",
   "raster_cursor": {
-    "duffel": 2848,
-    "serpapi": 80
+    "duffel": 155,
+    "serpapi": 81
   }
 }
