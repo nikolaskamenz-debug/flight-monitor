@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-09-29T08:37:15",
+  "erzeugt_am": "2026-09-29T11:23:53",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -133,6 +133,25 @@
       "aufenthalt_tage": 5,
       "preis_gesamt": 34477.9,
       "stand": "2026-09-28"
+    },
+    {
+      "abflughafen": "ZRH",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-20",
+      "preis_pro_person": 21550.0,
+      "kabine_langstrecke": "FIRST",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LX 138 ZRH-HKG",
+      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
+      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTE1MgJMSDICTFhqBwgBEgNaUkhyBwgBEgNIS0caJhIKMjAyNi0xMi0yMDICTEgyAkxYagcIARIDSEtHcgcIARIDWlJIQAFAAUgEcAGYAQE&tfu=EgIIAQ",
+      "quelle": "serpapi",
+      "kabine_gesucht": "FIRST",
+      "ziel": "HKG",
+      "via": "Direkt",
+      "aufenthalt_tage": 5,
+      "preis_gesamt": 43100.0,
+      "stand": "2026-09-29"
     }
   ]
 }
