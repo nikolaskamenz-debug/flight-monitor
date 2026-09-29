@@ -1,23 +1,16 @@
 {
   "reise": {
-    "beschreibung": "MEILENFLUCHT — Dezember-Fernziele (JNB, CPT & HKG), mit Thankmar",
+    "beschreibung": "MEILENFLUCHT — FRA-HKG Business, 15.-21.12., mit Thankmar",
     "passagiere": 2,
     "kabinen": [
-      "FIRST",
       "BUSINESS"
     ],
     "ziele": [
-      "JNB",
-      "CPT",
       "HKG"
     ]
   },
   "abflughaefen": [
-    "MKF",
-    "FMO",
-    "MUC",
-    "FRA",
-    "ZRH"
+    "FRA"
   ],
   "zeitraum": {
     "hinflug_von": "2026-12-15",
@@ -47,7 +40,7 @@
     "_kommentar_zubringer": "MKF = Münster Hbf (Lufthansa Express Rail: ICE-Zubringer nach FRA zählt als Flugsegment). Zubringer sind oft eine Klasse tiefer — entscheidend ist die Kabine auf der Langstrecke."
   },
   "quellen": {
-    "_kommentar_airlines": "LH-Group: LH plus LX für die ZRH-Routen (SWISS fliegt JNB und HKG).",
+    "_kommentar_airlines": "LH nonstop FRA-HKG, LX für die via-ZRH-Alternative.",
     "airlines": [
       "LH",
       "LX"

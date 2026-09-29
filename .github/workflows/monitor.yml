@@ -2,12 +2,8 @@ name: MEILENFLUCHT — Fernziel-Monitor
 
 on:
   schedule:
-    # ~4 (Nachtlauf), ~8, ~14 und ~20 Uhr Berliner Sommerzeit; Minute 17
-    # meidet die überlaufenen Voll-Stunden-Warteschlangen von GitHub
-    - cron: "17 2 * * *"
-    - cron: "17 5 * * *"
-    - cron: "17 11 * * *"
-    - cron: "17 17 * * *"
+    # Preischeck alle 2 Stunden (Minute 17 meidet GitHubs Voll-Stunden-Stau)
+    - cron: "17 */2 * * *"
   workflow_dispatch:
 
 permissions:

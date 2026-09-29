@@ -220,8 +220,8 @@ def _nachpruefung_serpapi(kombis, cursor, bisher) -> list[Angebot]:
     if not serpapi_quelle.verfuegbar():
         print("Quelle serpapi: Zugangsdaten nicht gesetzt — übersprungen.")
         return []
-    if os.environ.get("GITHUB_ACTIONS") and datetime.now().hour < 3:
-        print("Quelle serpapi: Nachtlauf — Nachprüfung ausgesetzt "
+    if os.environ.get("GITHUB_ACTIONS") and datetime.now().hour not in (5, 11, 17):
+        print("Quelle serpapi: Nachprüfung läuft nur 3x täglich "
               "(schont das Monatskontingent).")
         return []
 
