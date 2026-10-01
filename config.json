@@ -27,7 +27,7 @@
       "sofort_buchen": 5000
     },
     "BUSINESS": {
-      "alarm_ab": 3000,
+      "alarm_ab": 4000,
       "sofort_buchen": 2800
     },
     "nur_besser_als_letzter_alarm": true,
