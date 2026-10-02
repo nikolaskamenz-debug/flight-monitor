@@ -1,6 +1,25 @@
 {
-  "erzeugt_am": "2026-10-01T23:54:02",
+  "erzeugt_am": "2026-10-02T05:41:11",
   "angebote": [
+    {
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-21",
+      "preis_pro_person": 3385.2,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 1,
+      "umsteige_rueck": 1,
+      "fluege_hin": "LX3639 FRA-ZRH, LX0138 ZRH-HKG",
+      "fluege_rueck": "LX0139 HKG-ZRH, LX3602 ZRH-FRA",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "HKG",
+      "via": "ZRH",
+      "aufenthalt_tage": 6,
+      "preis_gesamt": 6770.4,
+      "stand": "2026-10-02"
+    },
     {
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-15",
@@ -19,25 +38,6 @@
       "aufenthalt_tage": 6,
       "preis_gesamt": 6779.86,
       "stand": "2026-09-30"
-    },
-    {
-      "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-15",
-      "rueckflug_datum": "2026-12-21",
-      "preis_pro_person": 3688.45,
-      "kabine_langstrecke": "BUSINESS",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LX3639 FRA-ZRH, LX0138 ZRH-HKG",
-      "fluege_rueck": "LH0797 HKG-FRA",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "BUSINESS",
-      "ziel": "HKG",
-      "via": "ZRH",
-      "aufenthalt_tage": 6,
-      "preis_gesamt": 7376.9,
-      "stand": "2026-10-01"
     },
     {
       "abflughafen": "FRA",
