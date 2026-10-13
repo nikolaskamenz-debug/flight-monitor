@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-10-12T23:01:08",
+  "erzeugt_am": "2026-10-13T06:49:13",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -40,25 +40,6 @@
       "stand": "2026-10-10"
     },
     {
-      "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-16",
-      "rueckflug_datum": "2026-12-21",
-      "preis_pro_person": 7365.32,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LH0572 FRA-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "JNB",
-      "via": "Direkt",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 14730.64,
-      "stand": "2026-09-28"
-    },
-    {
       "abflughafen": "MUC",
       "hinflug_datum": "2026-12-15",
       "rueckflug_datum": "2026-12-22",
@@ -76,44 +57,6 @@
       "aufenthalt_tage": 7,
       "preis_gesamt": 21769.02,
       "stand": "2026-09-29"
-    },
-    {
-      "abflughafen": "FRA",
-      "hinflug_datum": "2026-12-15",
-      "rueckflug_datum": "2026-12-22",
-      "preis_pro_person": 13871.5,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LH 1196 FRA-ZRH, LX 138 ZRH-HKG",
-      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
-      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTE1MgJMSDICTFhqBwgBEgNGUkFyBwgBEgNIS0caJhIKMjAyNi0xMi0yMjICTEgyAkxYagcIARIDSEtHcgcIARIDRlJBQAFAAUgEcAGYAQE&tfu=EgIIAQ",
-      "quelle": "serpapi",
-      "kabine_gesucht": "FIRST",
-      "ziel": "HKG",
-      "via": "ZRH",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 27743.0,
-      "stand": "2026-09-28"
-    },
-    {
-      "abflughafen": "ZRH",
-      "hinflug_datum": "2026-12-16",
-      "rueckflug_datum": "2026-12-21",
-      "preis_pro_person": 17238.95,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 1,
-      "umsteige_rueck": 1,
-      "fluege_hin": "LH1197 ZRH-FRA, LH0572 FRA-JNB",
-      "fluege_rueck": "LH0573 JNB-FRA, LH1188 FRA-ZRH",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "JNB",
-      "via": "FRA",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 34477.9,
-      "stand": "2026-09-28"
     },
     {
       "abflughafen": "ZRH",
