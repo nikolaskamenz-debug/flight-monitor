@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-10-13T21:17:41",
+  "erzeugt_am": "2026-10-14T01:14:18",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -38,44 +38,6 @@
       "aufenthalt_tage": 6,
       "preis_gesamt": 6705.68,
       "stand": "2026-10-10"
-    },
-    {
-      "abflughafen": "MUC",
-      "hinflug_datum": "2026-12-15",
-      "rueckflug_datum": "2026-12-22",
-      "preis_pro_person": 10884.51,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LH0574 MUC-CPT",
-      "fluege_rueck": "LH0575 CPT-MUC",
-      "buchungslink": "",
-      "quelle": "duffel",
-      "kabine_gesucht": "FIRST",
-      "ziel": "CPT",
-      "via": "Direkt",
-      "aufenthalt_tage": 7,
-      "preis_gesamt": 21769.02,
-      "stand": "2026-09-29"
-    },
-    {
-      "abflughafen": "ZRH",
-      "hinflug_datum": "2026-12-15",
-      "rueckflug_datum": "2026-12-20",
-      "preis_pro_person": 21550.0,
-      "kabine_langstrecke": "FIRST",
-      "umsteige_hin": 0,
-      "umsteige_rueck": 0,
-      "fluege_hin": "LX 138 ZRH-HKG",
-      "fluege_rueck": "Rückflug: siehe Google-Flights-Link",
-      "buchungslink": "https://www.google.com/travel/flights?hl=de&gl=us&curr=EUR&tfs=CBwQAhomEgoyMDI2LTEyLTE1MgJMSDICTFhqBwgBEgNaUkhyBwgBEgNIS0caJhIKMjAyNi0xMi0yMDICTEgyAkxYagcIARIDSEtHcgcIARIDWlJIQAFAAUgEcAGYAQE&tfu=EgIIAQ",
-      "quelle": "serpapi",
-      "kabine_gesucht": "FIRST",
-      "ziel": "HKG",
-      "via": "Direkt",
-      "aufenthalt_tage": 5,
-      "preis_gesamt": 43100.0,
-      "stand": "2026-09-29"
     }
   ]
 }
