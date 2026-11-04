@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-11-04T02:21:49",
+  "erzeugt_am": "2026-11-04T12:11:22",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -24,7 +24,7 @@
       "abflughafen": "FRA",
       "hinflug_datum": "2026-12-15",
       "rueckflug_datum": "2026-12-21",
-      "preis_pro_person": 4010.53,
+      "preis_pro_person": 3580.75,
       "kabine_langstrecke": "BUSINESS",
       "umsteige_hin": 0,
       "umsteige_rueck": 0,
@@ -36,8 +36,8 @@
       "ziel": "HKG",
       "via": "Direkt",
       "aufenthalt_tage": 6,
-      "preis_gesamt": 8021.06,
-      "stand": "2026-10-28"
+      "preis_gesamt": 7161.5,
+      "stand": "2026-11-04"
     }
   ]
 }
