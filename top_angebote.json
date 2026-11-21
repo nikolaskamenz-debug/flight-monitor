@@ -1,5 +1,5 @@
 {
-  "erzeugt_am": "2026-11-21T03:14:05",
+  "erzeugt_am": "2026-11-21T12:41:41",
   "angebote": [
     {
       "abflughafen": "FRA",
@@ -19,6 +19,25 @@
       "aufenthalt_tage": 6,
       "preis_gesamt": 5257.18,
       "stand": "2026-11-13"
+    },
+    {
+      "abflughafen": "FRA",
+      "hinflug_datum": "2026-12-15",
+      "rueckflug_datum": "2026-12-21",
+      "preis_pro_person": 4370.12,
+      "kabine_langstrecke": "BUSINESS",
+      "umsteige_hin": 0,
+      "umsteige_rueck": 0,
+      "fluege_hin": "LH0796 FRA-HKG",
+      "fluege_rueck": "LH0797 HKG-FRA",
+      "buchungslink": "",
+      "quelle": "duffel",
+      "kabine_gesucht": "BUSINESS",
+      "ziel": "HKG",
+      "via": "Direkt",
+      "aufenthalt_tage": 6,
+      "preis_gesamt": 8740.24,
+      "stand": "2026-11-21"
     }
   ]
 }
